@@ -26,8 +26,11 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.Basic, v, false);
-                //var textSample = view.FindViewById<TextView>(Resource.Id.txtBasic);
-                //textSample.Text = "BASIC";
+                var textSample = view.FindViewById<TextView>(Resource.Id.txtBasic);
+                textSample.Text = " This application, so - called 'BeerProcessingManager' " +
+                                  "was designed by Marcin Skryśkiewicz.\n " +
+                                  "The source code is stored in GitHub:\n " +
+                                  "https://github.com/marskr/BeerProcessingManager \n";
                 return view;
             });
             adaptor.AddFragmentView((i, v, b) =>

@@ -34,7 +34,6 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\showcharts.x
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\modifyprocessing.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\basic.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\modifyvalve.xml
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\mainpopup.xml
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\BeerProcessingManager.dll.mdb
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csprojResolveAssemblyReference.cache
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\mainpopup.xml

@@ -5,10 +5,10 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  <TextView
-    android:text="This application, so-called 'BeerProcessingManager, designed by Marcin Skryśkiewicz.\n
-                  All source code is stored in GitHub "
-    android:layout_height="match_parent"
-    android:layout_width="wrap_content"
-    android:id="@+id/txtBasic"/> 
+    <TextView
+        android:gravity="center_horizontal"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:id="@+id/txtBasic" 
+        android:autoLink="web"/>
 </LinearLayout>
