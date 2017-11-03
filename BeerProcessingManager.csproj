@@ -110,7 +110,22 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\Tab.axml">
+    <AndroidResource Include="Resources\layout\ShowCharts.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ShowData.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ModifyProcessing.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Basic.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\MainPopup.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\ModifyValve.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -138,6 +153,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

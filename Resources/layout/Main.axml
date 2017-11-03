@@ -5,10 +5,13 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-  
+  <Button
+        android:text="CLICK ME"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnPopupMenu" />
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-  
 </LinearLayout>

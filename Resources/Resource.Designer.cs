@@ -1822,8 +1822,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0028
 			public const int SYM = 2131427368;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int action0 = 2131427433;
+			// aapt resource value: 0x7f0b006b
+			public const int action0 = 2131427435;
 			
 			// aapt resource value: 0x7f0b0056
 			public const int action_bar = 2131427414;
@@ -1846,17 +1846,17 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0034
 			public const int action_bar_title = 2131427380;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int action_container = 2131427430;
+			// aapt resource value: 0x7f0b0068
+			public const int action_container = 2131427432;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int action_context_bar = 2131427415;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int action_divider = 2131427437;
+			// aapt resource value: 0x7f0b006f
+			public const int action_divider = 2131427439;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int action_image = 2131427431;
+			// aapt resource value: 0x7f0b0069
+			public const int action_image = 2131427433;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1873,11 +1873,11 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0036
 			public const int action_mode_close_button = 2131427382;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int action_text = 2131427432;
+			// aapt resource value: 0x7f0b006a
+			public const int action_text = 2131427434;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int actions = 2131427446;
+			// aapt resource value: 0x7f0b0078
+			public const int actions = 2131427448;
 			
 			// aapt resource value: 0x7f0b0037
 			public const int activity_chooser_view_content = 2131427383;
@@ -1903,17 +1903,35 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b002e
 			public const int bottom = 2131427374;
 			
+			// aapt resource value: 0x7f0b0066
+			public const int btnPopupMenu = 2131427430;
+			
 			// aapt resource value: 0x7f0b003d
 			public const int buttonPanel = 2131427389;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int cancel_action = 2131427434;
+			// aapt resource value: 0x7f0b006c
+			public const int cancel_action = 2131427436;
 			
 			// aapt resource value: 0x7f0b004d
 			public const int checkbox = 2131427405;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int chronometer = 2131427442;
+			// aapt resource value: 0x7f0b007c
+			public const int choiceBasic = 2131427452;
+			
+			// aapt resource value: 0x7f0b007f
+			public const int choiceModifyProcessing = 2131427455;
+			
+			// aapt resource value: 0x7f0b0080
+			public const int choiceModifyValve = 2131427456;
+			
+			// aapt resource value: 0x7f0b007e
+			public const int choiceShowCharts = 2131427454;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int choiceShowData = 2131427453;
+			
+			// aapt resource value: 0x7f0b0074
+			public const int chronometer = 2131427444;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int collapseActionView = 2131427370;
@@ -1942,8 +1960,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0021
 			public const int end = 2131427361;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int end_padder = 2131427448;
+			// aapt resource value: 0x7f0b007a
+			public const int end_padder = 2131427450;
 			
 			// aapt resource value: 0x7f0b0038
 			public const int expand_activities_button = 2131427384;
@@ -1963,8 +1981,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b003c
 			public const int icon = 2131427388;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int icon_group = 2131427447;
+			// aapt resource value: 0x7f0b0079
+			public const int icon_group = 2131427449;
 			
 			// aapt resource value: 0x7f0b002b
 			public const int ifRoom = 2131427371;
@@ -1972,8 +1990,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0039
 			public const int image = 2131427385;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int info = 2131427443;
+			// aapt resource value: 0x7f0b0075
+			public const int info = 2131427445;
 			
 			// aapt resource value: 0x7f0b0033
 			public const int italic = 2131427379;
@@ -1990,11 +2008,11 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b003b
 			public const int list_item = 2131427387;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int media_actions = 2131427436;
+			// aapt resource value: 0x7f0b006e
+			public const int media_actions = 2131427438;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int message = 2131427450;
+			// aapt resource value: 0x7f0b007b
+			public const int message = 2131427451;
 			
 			// aapt resource value: 0x7f0b0022
 			public const int middle = 2131427362;
@@ -2011,17 +2029,17 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b000f
 			public const int normal = 2131427343;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int notification_background = 2131427445;
+			// aapt resource value: 0x7f0b0077
+			public const int notification_background = 2131427447;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int notification_main_column = 2131427439;
+			// aapt resource value: 0x7f0b0071
+			public const int notification_main_column = 2131427441;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int notification_main_column_container = 2131427438;
+			// aapt resource value: 0x7f0b0070
+			public const int notification_main_column_container = 2131427440;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int pager = 2131427429;
+			// aapt resource value: 0x7f0b0067
+			public const int pager = 2131427431;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int parentPanel = 2131427391;
@@ -2035,11 +2053,11 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b004f
 			public const int radio = 2131427407;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int right_icon = 2131427444;
+			// aapt resource value: 0x7f0b0076
+			public const int right_icon = 2131427446;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int right_side = 2131427440;
+			// aapt resource value: 0x7f0b0072
+			public const int right_side = 2131427442;
 			
 			// aapt resource value: 0x7f0b0019
 			public const int screen = 2131427353;
@@ -2113,8 +2131,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b001c
 			public const int src_over = 2131427356;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int status_bar_latest_event_content = 2131427435;
+			// aapt resource value: 0x7f0b006d
+			public const int status_bar_latest_event_content = 2131427437;
 			
 			// aapt resource value: 0x7f0b0050
 			public const int submenuarrow = 2131427408;
@@ -2137,8 +2155,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0043
 			public const int textSpacerNoTitle = 2131427395;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int time = 2131427441;
+			// aapt resource value: 0x7f0b0073
+			public const int time = 2131427443;
 			
 			// aapt resource value: 0x7f0b000d
 			public const int title = 2131427341;
@@ -2155,8 +2173,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0b0048
 			public const int topPanel = 2131427400;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int txtText = 2131427449;
+			// aapt resource value: 0x7f0b0065
+			public const int txtBasic = 2131427429;
 			
 			// aapt resource value: 0x7f0b001e
 			public const int uniform = 2131427358;
@@ -2296,70 +2314,82 @@ namespace BeerProcessingManager
 			public const int abc_select_dialog_material = 2130968602;
 			
 			// aapt resource value: 0x7f04001b
-			public const int Main = 2130968603;
+			public const int Basic = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int notification_action = 2130968604;
+			public const int Main = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int notification_action_tombstone = 2130968605;
+			public const int ModifyProcessing = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int notification_media_action = 2130968606;
+			public const int ModifyValve = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int notification_media_cancel_action = 2130968607;
+			public const int notification_action = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int notification_template_big_media = 2130968608;
+			public const int notification_action_tombstone = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int notification_template_big_media_custom = 2130968609;
+			public const int notification_media_action = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int notification_template_big_media_narrow = 2130968610;
+			public const int notification_media_cancel_action = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int notification_template_big_media_narrow_custom = 2130968611;
+			public const int notification_template_big_media = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int notification_template_custom_big = 2130968612;
+			public const int notification_template_big_media_custom = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int notification_template_icon_group = 2130968613;
+			public const int notification_template_big_media_narrow = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int notification_template_lines_media = 2130968614;
+			public const int notification_template_big_media_narrow_custom = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int notification_template_media = 2130968615;
+			public const int notification_template_custom_big = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int notification_template_media_custom = 2130968616;
+			public const int notification_template_icon_group = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int notification_template_part_chronometer = 2130968617;
+			public const int notification_template_lines_media = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int notification_template_part_time = 2130968618;
+			public const int notification_template_media = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int select_dialog_item_material = 2130968619;
+			public const int notification_template_media_custom = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int select_dialog_multichoice_material = 2130968620;
+			public const int notification_template_part_chronometer = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int select_dialog_singlechoice_material = 2130968621;
+			public const int notification_template_part_time = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int support_simple_spinner_dropdown_item = 2130968622;
+			public const int select_dialog_item_material = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int Tab = 2130968623;
+			public const int select_dialog_multichoice_material = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int tooltip = 2130968624;
+			public const int select_dialog_singlechoice_material = 2130968624;
+			
+			// aapt resource value: 0x7f040031
+			public const int ShowCharts = 2130968625;
+			
+			// aapt resource value: 0x7f040032
+			public const int ShowData = 2130968626;
+			
+			// aapt resource value: 0x7f040033
+			public const int support_simple_spinner_dropdown_item = 2130968627;
+			
+			// aapt resource value: 0x7f040034
+			public const int tooltip = 2130968628;
 			
 			static Layout()
 			{
@@ -2367,6 +2397,22 @@ namespace BeerProcessingManager
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int MainPopup = 2131558400;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
