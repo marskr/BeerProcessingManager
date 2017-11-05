@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BeerProcessingManager.DatabaseManagement
+namespace BeerProcessingManager.ThingspeakManagement
 {
     class DatabaseManager
     {
