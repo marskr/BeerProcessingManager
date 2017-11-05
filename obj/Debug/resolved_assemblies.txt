@@ -5,6 +5,8 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.C
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Xml.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\mscorlib.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.Xamarin.Android.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.Android.Arch.Core.Common.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.Android.Arch.Lifecycle.Common.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.Android.Arch.Lifecycle.Runtime.dll
@@ -33,3 +35,8 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.N
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Runtime.Serialization.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.ServiceModel.Internals.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Mono.Security.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Text.RegularExpressions.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.IO.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Xml.ReaderWriter.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Text.Encoding.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Globalization.dll

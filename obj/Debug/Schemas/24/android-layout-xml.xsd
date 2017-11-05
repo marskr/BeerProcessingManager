@@ -5,7 +5,7 @@
   <xs:import schemaLocation="schemas.android.com.tools.xsd" namespace="http://schemas.android.com/tools" />
   <xs:annotation>
     <xs:documentation>v24</xs:documentation>
-    <xs:documentation>2017-11-03 17:47:32</xs:documentation>
+    <xs:documentation>2017-11-04 16:57:31</xs:documentation>
   </xs:annotation>
   <xs:group name="any-view">
     <xs:choice>
@@ -82,6 +82,7 @@
       <xs:element ref="TextureView" />
       <xs:element ref="ViewStub" />
       <xs:element ref="fragment" />
+      <xs:element ref="OxyPlot.Xamarin.Android.PlotView" />
       <xs:element ref="android.support.v7.widget.ViewStubCompat" />
       <xs:element ref="android.support.v7.widget.SwitchCompat" />
       <xs:element ref="android.support.v7.widget.SearchView" />
@@ -1434,6 +1435,16 @@
     <xs:attribute ref="android:layout_marginStart" />
     <xs:attribute ref="android:layout_marginEnd" />
     <xs:attribute ref="android:style" />
+  </xs:complexType>
+  <xs:element name="OxyPlot.Xamarin.Android.PlotView" type="OxyPlot.Xamarin.Android.PlotView">
+    <xs:annotation>
+      <xs:documentation>Runtime Type: OxyPlot.Xamarin.Android.PlotView</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="OxyPlot.Xamarin.Android.PlotView">
+    <xs:complexContent mixed="false">
+      <xs:extension base="View" />
+    </xs:complexContent>
   </xs:complexType>
   <xs:element name="android.support.v7.widget.ViewStubCompat" type="android.support.v7.widget.ViewStubCompat">
     <xs:annotation>
