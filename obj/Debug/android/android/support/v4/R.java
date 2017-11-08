@@ -2134,11 +2134,11 @@ containing a value of this type.
         public static final int buttonPanel=0x7f0b003d;
         public static final int cancel_action=0x7f0b006c;
         public static final int checkbox=0x7f0b004d;
-        public static final int choiceBasic=0x7f0b007d;
-        public static final int choiceModifyProcessing=0x7f0b0080;
-        public static final int choiceModifyValve=0x7f0b0081;
-        public static final int choiceShowCharts=0x7f0b007f;
-        public static final int choiceShowData=0x7f0b007e;
+        public static final int choiceBasic=0x7f0b007e;
+        public static final int choiceModifyProcessing=0x7f0b0081;
+        public static final int choiceModifyValve=0x7f0b0082;
+        public static final int choiceShowCharts=0x7f0b0080;
+        public static final int choiceShowData=0x7f0b007f;
         public static final int chronometer=0x7f0b0074;
         public static final int collapseActionView=0x7f0b002a;
         public static final int contentPanel=0x7f0b0040;
@@ -2161,6 +2161,7 @@ containing a value of this type.
         public static final int id_pager=0x7f0b0067;
         public static final int id_plotView=0x7f0b007b;
         public static final int id_txtBasic=0x7f0b0065;
+        public static final int id_vwList=0x7f0b007c;
         public static final int ifRoom=0x7f0b002b;
         public static final int image=0x7f0b0039;
         public static final int info=0x7f0b0075;
@@ -2170,7 +2171,7 @@ containing a value of this type.
         public static final int listMode=0x7f0b000e;
         public static final int list_item=0x7f0b003b;
         public static final int media_actions=0x7f0b006e;
-        public static final int message=0x7f0b007c;
+        public static final int message=0x7f0b007d;
         public static final int middle=0x7f0b0022;
         public static final int multiply=0x7f0b0018;
         public static final int never=0x7f0b002c;

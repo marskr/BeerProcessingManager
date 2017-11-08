@@ -104,6 +104,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogManagement\LogManager.cs" />
     <Compile Include="PlotManagement\PlotManager.cs" />
     <Compile Include="ThingspeakManagement\ThingspeakManager.cs" />
     <Compile Include="MainActivityResorces\GenericFragmentPagerAdaptor.cs" />

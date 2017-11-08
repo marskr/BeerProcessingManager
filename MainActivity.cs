@@ -8,6 +8,7 @@ using OxyPlot.Xamarin.Android;
 using System.Collections.Generic;
 using BeerProcessingManager.ThingspeakManagement;
 using BeerProcessingManager.PlotManagement;
+using BeerProcessingManager.LogManagement;
 
 namespace BeerProcessingManager
 {
@@ -28,18 +29,41 @@ namespace BeerProcessingManager
             ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             ViewPager pager = FindViewById<ViewPager>(Resource.Id.id_pager);
             GenericFragmentPagerAdaptor adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
+
+            // BASIC
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.Basic, v, false);
-                var textSample = view.FindViewById<TextView>(Resource.Id.id_txtBasic);
+                TextView textSample = view.FindViewById<TextView>(Resource.Id.id_txtBasic);
                 textSample.Text = IntroText();
                 return view;
             });
+
+            // SHOW DATA
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ShowData, v, false);
+
+                //view.FindViewById<TextView>(Resource.Id.id_txtShowData).Text = "MEASURE RESULTS";
+
+                ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwList);
+                
+                List<Origin> l_dataStoringList = new List<Origin>();
+                l_dataStoringList = DataStorage.ArtificialList();
+
+                List<double> d_firSensorTemp = new List<double>();
+                foreach (var element in l_dataStoringList)
+                    d_firSensorTemp.Add(element.d_FirSensorTemp);
+
+                ArrayAdapter<double> adapter = new ArrayAdapter<double>(this,
+                    Android.Resource.Layout.SimpleListItem1, d_firSensorTemp);
+
+                viewList.Adapter = adapter;
+
                 return view;
             });
+
+            // SHOW CHARTS
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ShowCharts, v, false);
@@ -51,11 +75,15 @@ namespace BeerProcessingManager
                 viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
                 return view;
             });
+
+            // MODIFY PROCESSING
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ModifyProcessing, v, false);
                 return view;
             });
+
+            // MODIFY VALVE
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ModifyValve, v, false);
