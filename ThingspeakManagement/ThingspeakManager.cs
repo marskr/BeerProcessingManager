@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BeerProcessingManager.ThingspeakManagement
 {
@@ -26,8 +27,8 @@ namespace BeerProcessingManager.ThingspeakManagement
             Origin item = new Origin { i_MeasureNo = element0,
                                        d_Time = element1, d_FirSensorTemp = element2,
                                        d_SecSensorTemp = element3, d_ThiSensorTemp = element4 };
-            item.d_AvgSensorTemp = (item.d_FirSensorTemp + item.d_SecSensorTemp + 
-                                    item.d_ThiSensorTemp) / 3;
+            item.d_AvgSensorTemp = Math.Round((item.d_FirSensorTemp + item.d_SecSensorTemp + 
+                                    item.d_ThiSensorTemp) / 3, 2, MidpointRounding.AwayFromZero);
 
             l_dataStoringList.Add(item);
             return l_dataStoringList;

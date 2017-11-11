@@ -19,6 +19,7 @@ namespace BeerProcessingManager
         Button btnTempShowData1;
         Button btnTempShowData2;
         Button btnTempShowData3;
+        Button btnTempShowData4;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -50,13 +51,40 @@ namespace BeerProcessingManager
                 var view = i.Inflate(Resource.Layout.ShowData, v, false);
 
                 ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                btnTempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData);
-                btnTempShowData1.Click += delegate 
+                btnTempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData1);
+                btnTempShowData1.Click += (s, arg) => 
                 {
                     List<Origin> l_dataStoringList = new List<Origin>();
                     l_dataStoringList = DataStorage.ArtificialList();
 
-                    var adapter = new VwAdapter(this, l_dataStoringList);
+                    var adapter = new VwAdapter(this, l_dataStoringList, 1);
+                    viewList.Adapter = adapter;
+                };
+                btnTempShowData2 = view.FindViewById<Button>(Resource.Id.id_btnShowData2);
+                btnTempShowData2.Click += (s, arg) =>
+                {
+                    List<Origin> l_dataStoringList = new List<Origin>();
+                    l_dataStoringList = DataStorage.ArtificialList();
+
+                    var adapter = new VwAdapter(this, l_dataStoringList, 2);
+                    viewList.Adapter = adapter;
+                };
+                btnTempShowData3 = view.FindViewById<Button>(Resource.Id.id_btnShowData3);
+                btnTempShowData3.Click += (s, arg) =>
+                {
+                    List<Origin> l_dataStoringList = new List<Origin>();
+                    l_dataStoringList = DataStorage.ArtificialList();
+
+                    var adapter = new VwAdapter(this, l_dataStoringList, 3);
+                    viewList.Adapter = adapter;
+                };
+                btnTempShowData4 = view.FindViewById<Button>(Resource.Id.id_btnShowData4);
+                btnTempShowData4.Click += (s, arg) =>
+                {
+                    List<Origin> l_dataStoringList = new List<Origin>();
+                    l_dataStoringList = DataStorage.ArtificialList();
+
+                    var adapter = new VwAdapter(this, l_dataStoringList, 4);
                     viewList.Adapter = adapter;
                 };
 

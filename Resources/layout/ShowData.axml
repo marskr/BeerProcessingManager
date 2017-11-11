@@ -5,17 +5,51 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:id="@+id/id_btnShowData"
-        android:layout_width="100dp"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Sensor 1" />
-    <ListView
-        android:paddingRight="10dp"
-        android:paddingLeft="10dp"
+        android:layout_weight="1"
         android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/id_vwListShowData" />
+        android:minHeight="250px">
+        <Button
+            android:id="@+id/id_btnShowData1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sensor 1"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/id_btnShowData2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sensor 2"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/id_btnShowData3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Sensor 3"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/id_btnShowData4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Average"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1">
+        <ListView
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/id_vwListShowData"
+            android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

@@ -15,10 +15,12 @@ namespace BeerProcessingManager.ThingspeakManagement
     {
         private Activity activity;
         private List<Origin> measures;
-        public VwAdapter(Activity activity, List<Origin> listview)
+        private int i_choice;
+        public VwAdapter(Activity activity, List<Origin> listview, int i_choice)
         {
             this.activity = activity;
             this.measures = listview;
+            this.i_choice = i_choice;
         }
         public override int Count
         {
@@ -45,7 +47,21 @@ namespace BeerProcessingManager.ThingspeakManagement
             TextView txtTime = view.FindViewById<TextView>(Resource.Id.id_txtView3);
 
             txtNo.Text = "The measure number " + measures[i_position].i_MeasureNo; // int to string
-            txtTemperature.Text = "Temperature: " + measures[i_position].d_FirSensorTemp + "\u00B0C"; 
+            switch(i_choice)
+            {
+                case 1:
+                    txtTemperature.Text = "Temperature: " + measures[i_position].d_FirSensorTemp + "\u00B0C";
+                    break;
+                case 2:
+                    txtTemperature.Text = "Temperature: " + measures[i_position].d_SecSensorTemp + "\u00B0C";
+                    break;
+                case 3:
+                    txtTemperature.Text = "Temperature: " + measures[i_position].d_ThiSensorTemp + "\u00B0C";
+                    break;
+                case 4:
+                    txtTemperature.Text = "Temperature: " + measures[i_position].d_AvgSensorTemp + "\u00B0C";
+                    break;
+            }
             txtTime.Text = "Time: " + measures[i_position].d_Time;
 
             return view;
