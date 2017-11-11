@@ -15,7 +15,10 @@ namespace BeerProcessingManager
     [Activity(Label = "BeerProcessingManager", MainLauncher = true)]
     public class MainActivity : FragmentActivity
     {
-        Button b_btnPopupMenu;
+        Button btnPopupMenu;
+        Button btnTempShowData1;
+        Button btnTempShowData2;
+        Button btnTempShowData3;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,8 +26,8 @@ namespace BeerProcessingManager
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            b_btnPopupMenu = FindViewById<Button>(Resource.Id.id_btnPopupMenu);
-            b_btnPopupMenu.Click += ShowPopupMenu;
+            btnPopupMenu = FindViewById<Button>(Resource.Id.id_btnPopupMenu);
+            btnPopupMenu.Click += ShowPopupMenu;
 
             ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             ViewPager pager = FindViewById<ViewPager>(Resource.Id.id_pager);
@@ -34,8 +37,10 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.Basic, v, false);
+
                 TextView textSample = view.FindViewById<TextView>(Resource.Id.id_txtBasic);
                 textSample.Text = IntroText();
+
                 return view;
             });
 
@@ -44,21 +49,16 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ShowData, v, false);
 
-                //view.FindViewById<TextView>(Resource.Id.id_txtShowData).Text = "MEASURE RESULTS";
+                ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
+                btnTempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData);
+                btnTempShowData1.Click += delegate 
+                {
+                    List<Origin> l_dataStoringList = new List<Origin>();
+                    l_dataStoringList = DataStorage.ArtificialList();
 
-                ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwList);
-                
-                List<Origin> l_dataStoringList = new List<Origin>();
-                l_dataStoringList = DataStorage.ArtificialList();
-
-                List<double> d_firSensorTemp = new List<double>();
-                foreach (var element in l_dataStoringList)
-                    d_firSensorTemp.Add(element.d_FirSensorTemp);
-
-                ArrayAdapter<double> adapter = new ArrayAdapter<double>(this,
-                    Android.Resource.Layout.SimpleListItem1, d_firSensorTemp);
-
-                viewList.Adapter = adapter;
+                    var adapter = new VwAdapter(this, l_dataStoringList);
+                    viewList.Adapter = adapter;
+                };
 
                 return view;
             });
@@ -67,12 +67,12 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ShowCharts, v, false);
-                PlotView viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
 
+                PlotView viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
                 List<Origin> l_dataStoringList = new List<Origin>();
                 l_dataStoringList = DataStorage.ArtificialList();
-     
                 viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
+
                 return view;
             });
 
@@ -91,7 +91,7 @@ namespace BeerProcessingManager
             });
 
             pager.Adapter = adaptor;
-            pager.SetOnPageChangeListener(new ViewPageListenerForActionBar(ActionBar));
+            pager.SetOnPageChangeListener(listener: new ViewPageListenerForActionBar(ActionBar));
 
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "BASIC"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "SHOW DATA"));
@@ -108,7 +108,7 @@ namespace BeerProcessingManager
         }
         private void ShowPopupMenu(object sender, EventArgs e)
         {
-            PopupMenu menu = new PopupMenu(this, b_btnPopupMenu);
+            PopupMenu menu = new PopupMenu(this, btnPopupMenu);
             menu.MenuInflater.Inflate(Resource.Menu.MainPopup, menu.Menu);
 
             menu.MenuItemClick += (s, arg) =>

@@ -45,3 +45,4 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.c
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\BeerProcessingManager.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.dll.mdb
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\listvwshowdata.xml

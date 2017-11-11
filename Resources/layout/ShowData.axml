@@ -5,12 +5,17 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <Button
+        android:id="@+id/id_btnShowData"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Sensor 1" />
     <ListView
-        android:paddingRight="30dp"
-        android:paddingLeft="30dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/id_vwList" />
+        android:id="@+id/id_vwListShowData" />
 </LinearLayout>
