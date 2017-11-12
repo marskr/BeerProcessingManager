@@ -15,11 +15,11 @@ namespace BeerProcessingManager
     [Activity(Label = "BeerProcessingManager", MainLauncher = true)]
     public class MainActivity : FragmentActivity
     {
-        Button btnPopupMenu;
-        Button btnTempShowData1;
-        Button btnTempShowData2;
-        Button btnTempShowData3;
-        Button btnTempShowData4;
+        Button btn_PopupMenu;
+        Button btn_TempShowData1;
+        Button btn_TempShowData2;
+        Button btn_TempShowData3;
+        Button btn_TempShowData4;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,8 +27,8 @@ namespace BeerProcessingManager
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
-            btnPopupMenu = FindViewById<Button>(Resource.Id.id_btnPopupMenu);
-            btnPopupMenu.Click += ShowPopupMenu;
+            btn_PopupMenu = FindViewById<Button>(Resource.Id.id_btnPopupMenu);
+            btn_PopupMenu.Click += ShowPopupMenu;
 
             ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             ViewPager pager = FindViewById<ViewPager>(Resource.Id.id_pager);
@@ -50,37 +50,41 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ShowData, v, false);
 
-                ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                btnTempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData1);
-                btnTempShowData1.Click += (s, arg) => 
+                //ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
+                btn_TempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData1);
+                btn_TempShowData1.Click += (s, arg) =>
                 {
+                    ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
                     List<Origin> l_dataStoringList = new List<Origin>();
                     l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 1);
                     viewList.Adapter = adapter;
                 };
-                btnTempShowData2 = view.FindViewById<Button>(Resource.Id.id_btnShowData2);
-                btnTempShowData2.Click += (s, arg) =>
+                btn_TempShowData2 = view.FindViewById<Button>(Resource.Id.id_btnShowData2);
+                btn_TempShowData2.Click += (s, arg) =>
                 {
+                    ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
                     List<Origin> l_dataStoringList = new List<Origin>();
                     l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 2);
                     viewList.Adapter = adapter;
                 };
-                btnTempShowData3 = view.FindViewById<Button>(Resource.Id.id_btnShowData3);
-                btnTempShowData3.Click += (s, arg) =>
+                btn_TempShowData3 = view.FindViewById<Button>(Resource.Id.id_btnShowData3);
+                btn_TempShowData3.Click += (s, arg) =>
                 {
+                    ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
                     List<Origin> l_dataStoringList = new List<Origin>();
                     l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 3);
                     viewList.Adapter = adapter;
                 };
-                btnTempShowData4 = view.FindViewById<Button>(Resource.Id.id_btnShowData4);
-                btnTempShowData4.Click += (s, arg) =>
+                btn_TempShowData4 = view.FindViewById<Button>(Resource.Id.id_btnShowData4);
+                btn_TempShowData4.Click += (s, arg) =>
                 {
+                    ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
                     List<Origin> l_dataStoringList = new List<Origin>();
                     l_dataStoringList = DataStorage.ArtificialList();
 
@@ -136,7 +140,7 @@ namespace BeerProcessingManager
         }
         private void ShowPopupMenu(object sender, EventArgs e)
         {
-            PopupMenu menu = new PopupMenu(this, btnPopupMenu);
+            PopupMenu menu = new PopupMenu(this, btn_PopupMenu);
             menu.MenuInflater.Inflate(Resource.Menu.MainPopup, menu.Menu);
 
             menu.MenuItemClick += (s, arg) =>
@@ -171,7 +175,6 @@ namespace BeerProcessingManager
 
             menu.Show();
         }
-        
     }
 }
 

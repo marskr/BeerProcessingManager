@@ -1,4 +1,4 @@
-﻿ using Android.App;
+﻿using Android.App;
 using Android.Widget;
 using System.Collections.Generic;
 using Android.Views;
@@ -7,26 +7,26 @@ namespace BeerProcessingManager.ThingspeakManagement
 {
     public class VwHolder : Java.Lang.Object
     {
-        public TextView txtNo { get; set; }
-        public TextView txtTemperature { get; set; }
-        public TextView txtTime { get; set; }
+        public TextView tv_TxtNo { get; set; }
+        public TextView tv_TxtTemperature { get; set; }
+        public TextView tv_TxtTime { get; set; }
     }
     public class VwAdapter : BaseAdapter
     {
         private Activity activity;
-        private List<Origin> measures;
+        private List<Origin> l_measures;
         private int i_choice;
-        public VwAdapter(Activity activity, List<Origin> listview, int i_choice)
+        public VwAdapter(Activity activity, List<Origin> l_listview, int i_choice)
         {
             this.activity = activity;
-            this.measures = listview;
+            this.l_measures = l_listview;
             this.i_choice = i_choice;
         }
         public override int Count
         {
             get
             {
-                return measures.Count;
+                return l_measures.Count;
             }
         }
         public override Java.Lang.Object GetItem(int i_position)
@@ -35,34 +35,34 @@ namespace BeerProcessingManager.ThingspeakManagement
         }
         public override long GetItemId(int i_position)
         {
-            return measures[i_position].Id;
+            return l_measures[i_position].i_Id;
         }
-        public override View GetView(int i_position, View convertView, ViewGroup parent)
+        public override View GetView(int i_position, View v_convertView, ViewGroup vg_parent)
         {
-            var view = convertView ?? activity.LayoutInflater.Inflate
-                (Resource.Layout.ListVwShowData, parent, false);
+            var view = v_convertView ?? activity.LayoutInflater.Inflate
+                (Resource.Layout.ListVwShowData, vg_parent, false);
 
-            TextView txtNo = view.FindViewById<TextView>(Resource.Id.id_txtView1);
-            TextView txtTemperature = view.FindViewById<TextView>(Resource.Id.id_txtView2);
-            TextView txtTime = view.FindViewById<TextView>(Resource.Id.id_txtView3);
+            TextView tv_TxtNo = view.FindViewById<TextView>(Resource.Id.id_txtView1);
+            TextView tv_TxtTemperature = view.FindViewById<TextView>(Resource.Id.id_txtView2);
+            TextView tv_TxtTime = view.FindViewById<TextView>(Resource.Id.id_txtView3);
 
-            txtNo.Text = "The measure number " + measures[i_position].i_MeasureNo; // int to string
+            tv_TxtNo.Text = "The measure number " + l_measures[i_position].i_MeasureNo; // int to string
             switch(i_choice)
             {
                 case 1:
-                    txtTemperature.Text = "Temperature: " + measures[i_position].d_FirSensorTemp + "\u00B0C";
+                    tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_FirSensorTemp + "\u00B0C";
                     break;
                 case 2:
-                    txtTemperature.Text = "Temperature: " + measures[i_position].d_SecSensorTemp + "\u00B0C";
+                    tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_SecSensorTemp + "\u00B0C";
                     break;
                 case 3:
-                    txtTemperature.Text = "Temperature: " + measures[i_position].d_ThiSensorTemp + "\u00B0C";
+                    tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_ThiSensorTemp + "\u00B0C";
                     break;
                 case 4:
-                    txtTemperature.Text = "Temperature: " + measures[i_position].d_AvgSensorTemp + "\u00B0C";
+                    tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_AvgSensorTemp + "\u00B0C";
                     break;
             }
-            txtTime.Text = "Time: " + measures[i_position].d_Time;
+            tv_TxtTime.Text = "Time: " + l_measures[i_position].d_Time;
 
             return view;
         }
