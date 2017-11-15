@@ -107,6 +107,7 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "BeerProcessingManager.dll" comes first in this list. */
 		"BeerProcessingManager.dll",
+		"Newtonsoft.Json.dll",
 		"OxyPlot.dll",
 		"OxyPlot.Xamarin.Android.dll",
 		"Xamarin.Android.Arch.Core.Common.dll",
@@ -122,8 +123,9 @@ class MonoPackageManager_Resources {
 		"Xamarin.Android.Support.v4.dll",
 		"Xamarin.Android.Support.v7.AppCompat.dll",
 		"Xamarin.Android.Support.Vector.Drawable.dll",
+		"ThingSpeakDotNetLibrary.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};
-	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_26";
+	public static final String ApiPackageName = "Mono.Android.Platform.ApiLevel_23";
 }

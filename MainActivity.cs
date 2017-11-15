@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using BeerProcessingManager.ThingspeakManagement;
 using BeerProcessingManager.PlotManagement;
 using BeerProcessingManager.LogManagement;
+using ThingSpeakWinRT;
 
 namespace BeerProcessingManager
 {
@@ -16,10 +17,13 @@ namespace BeerProcessingManager
     public class MainActivity : FragmentActivity
     {
         Button btn_PopupMenu;
+        Button btn_RetrieveFromTS;
+        Button btn_RetrieveFromTS2;
         Button btn_TempShowData1;
         Button btn_TempShowData2;
         Button btn_TempShowData3;
         Button btn_TempShowData4;
+        List<Origin> l_dataStoringList = new List<Origin>();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -50,13 +54,23 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ShowData, v, false);
 
-                //ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
+                btn_RetrieveFromTS = view.FindViewById<Button>(Resource.Id.id_btnRetrieveFromTS);
+                btn_RetrieveFromTS.Click += async (s, arg) =>
+                {
+                    ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
+                    ThingSpeakData feeds = await DataStorage.ReadThingspeak();
+                    l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
+                    Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
+
+                    var adapter = new VwAdapter(this, l_dataStoringList, 5);
+                    viewList.Adapter = adapter;
+                };
                 btn_TempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData1);
                 btn_TempShowData1.Click += (s, arg) =>
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                    List<Origin> l_dataStoringList = new List<Origin>();
-                    l_dataStoringList = DataStorage.ArtificialList();
+                    //List<Origin> l_dataStoringList = new List<Origin>();
+                    //l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 1);
                     viewList.Adapter = adapter;
@@ -65,8 +79,6 @@ namespace BeerProcessingManager
                 btn_TempShowData2.Click += (s, arg) =>
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                    List<Origin> l_dataStoringList = new List<Origin>();
-                    l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 2);
                     viewList.Adapter = adapter;
@@ -75,8 +87,6 @@ namespace BeerProcessingManager
                 btn_TempShowData3.Click += (s, arg) =>
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                    List<Origin> l_dataStoringList = new List<Origin>();
-                    l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 3);
                     viewList.Adapter = adapter;
@@ -85,8 +95,6 @@ namespace BeerProcessingManager
                 btn_TempShowData4.Click += (s, arg) =>
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                    List<Origin> l_dataStoringList = new List<Origin>();
-                    l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 4);
                     viewList.Adapter = adapter;
@@ -100,10 +108,16 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ShowCharts, v, false);
 
-                PlotView viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
-                List<Origin> l_dataStoringList = new List<Origin>();
-                l_dataStoringList = DataStorage.ArtificialList();
-                viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
+                btn_RetrieveFromTS2 = view.FindViewById<Button>(Resource.Id.id_btnRetrieveFromTS2);
+                btn_RetrieveFromTS2.Click += async (s, arg) =>
+                {
+                    PlotView viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
+                    ThingSpeakData feeds = await DataStorage.ReadThingspeak();
+                    l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
+                    Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
+
+                    viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
+                };
 
                 return view;
             });

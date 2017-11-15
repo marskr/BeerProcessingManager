@@ -16,6 +16,11 @@ namespace BeerProcessingManager.ThingspeakManagement
         private Activity activity;
         private List<Origin> l_measures;
         private int i_choice;
+        private const int i_FirSensorChoice = 1;
+        private const int i_SecSensorChoice = 2;
+        private const int i_ThiSensorChoice = 3;
+        private const int i_AvgSensorChoice = 4;
+        private const int i_DataExtractChoice = 5;
         public VwAdapter(Activity activity, List<Origin> l_listview, int i_choice)
         {
             this.activity = activity;
@@ -46,23 +51,33 @@ namespace BeerProcessingManager.ThingspeakManagement
             TextView tv_TxtTemperature = view.FindViewById<TextView>(Resource.Id.id_txtView2);
             TextView tv_TxtTime = view.FindViewById<TextView>(Resource.Id.id_txtView3);
 
-            tv_TxtNo.Text = "The measure number " + l_measures[i_position].i_MeasureNo; // int to string
-            switch(i_choice)
+            if (i_choice != i_DataExtractChoice)
+                tv_TxtNo.Text = "The measure number " + l_measures[i_position].i_MeasureNo; // int to string
+            else
+                tv_TxtNo.Text = "";
+
+            switch (i_choice)
             {
-                case 1:
+                case i_FirSensorChoice:
                     tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_FirSensorTemp + "\u00B0C";
                     break;
-                case 2:
+                case i_SecSensorChoice:
                     tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_SecSensorTemp + "\u00B0C";
                     break;
-                case 3:
+                case i_ThiSensorChoice:
                     tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_ThiSensorTemp + "\u00B0C";
                     break;
-                case 4:
+                case i_AvgSensorChoice:
                     tv_TxtTemperature.Text = "Temperature: " + l_measures[i_position].d_AvgSensorTemp + "\u00B0C";
                     break;
+                case i_DataExtractChoice:
+                    tv_TxtTemperature.Text = "";
+                    break;
             }
-            tv_TxtTime.Text = "Time: " + l_measures[i_position].d_Time;
+            if (i_choice != i_DataExtractChoice)
+                tv_TxtTime.Text = "Time: " + l_measures[i_position].d_Time;
+            else
+                tv_TxtTime.Text = "";
 
             return view;
         }

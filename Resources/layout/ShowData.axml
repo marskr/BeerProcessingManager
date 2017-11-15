@@ -4,14 +4,28 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
+    android:minHeight="800px">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:minWidth="25px"
-        android:minHeight="250px">
+        android:minHeight="400px">
+        <Button
+            android:id="@+id/id_btnRetrieveFromTS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Get from Thingspeak!"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:minWidth="25px"
+        android:minHeight="400px">
         <Button
             android:id="@+id/id_btnShowData1"
             android:layout_width="fill_parent"

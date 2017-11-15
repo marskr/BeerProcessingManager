@@ -4,9 +4,30 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
-    <OxyPlot.Xamarin.Android.PlotView
+    android:minHeight="500px">
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:minWidth="25px"
+      android:minHeight="100px">
+      <Button
+        android:id="@+id/id_btnRetrieveFromTS2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Get from Thingspeak!"
+        android:layout_weight="1" />
+    </LinearLayout> 
+    <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:minWidth="25px"
+      android:minHeight="400px">
+      <OxyPlot.Xamarin.Android.PlotView
         android:id="@+id/id_plotView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

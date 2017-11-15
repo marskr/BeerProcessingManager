@@ -1,3 +1,4 @@
+D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.config
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.pdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.BeerProcessingManager.apk
@@ -46,3 +47,9 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\uploadflags.txt
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\BeerProcessingManager.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.dll.mdb
+D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\Newtonsoft.Json.dll
+D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\Newtonsoft.Json.xml
+D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\ThingSpeakDotNetLibrary.dll
+D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\ThingSpeakDotNetLibrary.pdb
+D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\ThingSpeakDotNetLibrary.dll.mdb
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\ThingSpeakDotNetLibrary.dll.mdb
