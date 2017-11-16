@@ -7,6 +7,10 @@ namespace BeerProcessingManager.ThingspeakManagement
 {
     public class DataStorage
     {
+        private const string s_writeAPIKey = "92XHIDTJ9UPNL727";
+        private const string s_readAPIKey = "96038QW649O5FFNH";
+        private const int i_channelID = 366148;
+        private const bool b_requiredSSL = true;
         public static List<Origin> ArtificialList()
         {
             List<Origin> l_dataStoringList = new List<Origin>();
@@ -24,18 +28,16 @@ namespace BeerProcessingManager.ThingspeakManagement
         }
         public static List<Origin> ThingspeakConverter(ThingSpeakData feeds)
         {
-            int i_iterator = 1;
-            double d_timechange = 0;
             List<Origin> l_dataStoringList = new List<Origin>();
             foreach (var element in feeds.Feeds)
             {
-                l_dataStoringList = AddToList(l_dataStoringList, i_iterator, d_timechange, 
+                l_dataStoringList = AddToList(l_dataStoringList, 
+                                              (element.EntryId == null) ? 0 : Convert.ToInt32(element.EntryId), 
+                                              (element.Field5 == null) ? 0 : Convert.ToDouble(element.Field5), 
                                               (element.Field1 == null) ? 0 : Convert.ToDouble(element.Field1),
                                               (element.Field2 == null) ? 0 : Convert.ToDouble(element.Field2),
                                               (element.Field2 == null) ? 0 : Convert.ToDouble(element.Field2));
-                i_iterator++; d_timechange += 0.5;
             }
-
             return l_dataStoringList;
         }
         private static List<Origin> AddToList(List<Origin> l_dataStoringList, int i_element0_measNo,
@@ -51,43 +53,10 @@ namespace BeerProcessingManager.ThingspeakManagement
             l_dataStoringList.Add(item);
             return l_dataStoringList;
         }
-
-        //public async static void ReadAsync()
-        //{
-        //    List<Origin> l_dataStoringList = new List<Origin>();
-        //    int i_MeasureNo = 0;
-        //    double d_Time = 0;
-
-        //    var client = new ThingSpeakClient(sslRequired: true);
-        //    var feeds = await client.ReadAllFeedsAsync("SIFTZ39QIJUL48WL", 171349);
-
-        //    System.Console.WriteLine(feeds);
-        //    System.Console.WriteLine("The description of the channel: {0}", feeds.Channel.Description);
-        //    foreach (var item in feeds.Feeds)
-        //    {
-        //        i_MeasureNo++;
-        //        d_Time++;
-        //        l_dataStoringList = AddToList(l_dataStoringList, i_MeasureNo, d_Time, 
-        //                                      Convert.ToDouble(item.Field1.ToString()),
-        //                                      Convert.ToDouble(item.Field2.ToString()),
-        //                                      Convert.ToDouble(item.Field3.ToString()));
-        //    }
-        //}
-        static async void ScreenAsync()
-        {
-            ThingSpeakData feeds = await ReadThingspeak();
-            foreach (var element in feeds.Feeds)
-            {
-                System.Console.WriteLine("Field1 is {0}", element.Field1);
-                System.Console.WriteLine("Field2 is {0}", element.Field2);
-                System.Console.WriteLine("Field3 is {0}", element.Field3);
-                System.Console.WriteLine("Field4 is {0}", element.Field4);
-            }
-        }
         public static async Task<ThingSpeakData> ReadThingspeak()
         {
-            var client = new ThingSpeakClient(sslRequired: true);
-            ThingSpeakData feeds = await client.ReadAllFeedsAsync("SIFTZ39QIJUL48WL", 171349);
+            var client = new ThingSpeakClient(sslRequired: b_requiredSSL);
+            ThingSpeakData feeds = await client.ReadAllFeedsAsync(s_readAPIKey, i_channelID);
 
             return feeds;
         }
