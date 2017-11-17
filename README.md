@@ -12,3 +12,24 @@ The BPM was encapsulated and devided for multiple parts:
 
 
 This mobile app was designed in case of realization a simple-use and complete project, that would make the monitoring of beer production process easy. 
+
+The project schema (main code files and directiories):
+-> LogManagement
+  - LogManager.cs
+-> MainActivityResources
+  - GenericFragmentPagerAdaptor.cs
+  - GenericViewPagerFragment.cs
+-> PlotManagement
+  - PlotManager.cs
+-> Resources
+  -> Layout
+    - Basic.axml
+    - ListVwShowData.axml
+    - Main.axml
+    - ModifyProcessing.axml
+    - ModifyValve.axml
+    - ShowCharts.axml
+    - ShowData.axml
+-> ThingspeakManagement
+  - ThingspeakManager.cs
+  - VwAdapter.cs
