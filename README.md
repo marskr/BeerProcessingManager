@@ -10,7 +10,6 @@ The BPM was encapsulated and devided for multiple parts:
 4. The Log Manager - all error and warning logs will be set in special text file,
 5. The Main Activity .cs file integrates work of an app and all modules.
 
-
 This mobile app was designed in case of realization a simple-use and complete project, that would make the monitoring of beer production process easy. 
 
 The project schema (main code files and directiories):
