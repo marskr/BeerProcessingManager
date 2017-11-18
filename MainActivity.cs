@@ -58,9 +58,17 @@ namespace BeerProcessingManager
                 btn_RetrieveFromTS.Click += async (s, arg) =>
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                    ThingSpeakData feeds = await DataStorage.ReadThingspeak();
-                    l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
-                    Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
+                    try
+                    {
+                        ThingSpeakData feeds = await DataStorage.ReadThingspeak();
+                        l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
+                        Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
+                        //Toast.MakeText(this, string.Format("The exception occured: {0}", ex.ToString()), ToastLength.Long).Show();
+                    }
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 5);
                     viewList.Adapter = adapter;
@@ -112,9 +120,16 @@ namespace BeerProcessingManager
                 btn_RetrieveFromTS2.Click += async (s, arg) =>
                 {
                     PlotView viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
-                    ThingSpeakData feeds = await DataStorage.ReadThingspeak();
-                    l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
-                    Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
+                    try
+                    {
+                        ThingSpeakData feeds = await DataStorage.ReadThingspeak();
+                        l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
+                        Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
+                    }
 
                     viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
                 };
