@@ -64,7 +64,7 @@ namespace BeerProcessingManager
                         l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
-                    catch (Exception ex)
+                    catch /*(Exception ex)*/
                     {
                         Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
                         //Toast.MakeText(this, string.Format("The exception occured: {0}", ex.ToString()), ToastLength.Long).Show();
@@ -126,7 +126,7 @@ namespace BeerProcessingManager
                         l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
-                    catch (Exception ex)
+                    catch /*(Exception ex)*/
                     {
                         Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
                     }
@@ -162,10 +162,11 @@ namespace BeerProcessingManager
         }
         private string IntroText()
         {
-            return " This application, so - called 'BeerProcessingManager' " +
+            return " This application so - called 'BeerProcessingManager'  " +
                    "was designed by Marcin Skryśkiewicz.\n " +
                    "The source code is stored in GitHub:\n " +
-                   "https://github.com/marskr/BeerProcessingManager \n";
+                   "https://github.com/marskr/BeerProcessingManager \n" +
+                   "Please use 'CLICK ME' button to get more info!";
         }
         private void ShowPopupMenu(object sender, EventArgs e)
         {
