@@ -10,6 +10,7 @@ using BeerProcessingManager.ThingspeakManagement;
 using BeerProcessingManager.PlotManagement;
 using BeerProcessingManager.LogManagement;
 using ThingSpeakWinRT;
+using Android.Media;
 
 namespace BeerProcessingManager
 {
@@ -23,6 +24,8 @@ namespace BeerProcessingManager
         Button btn_TempShowData2;
         Button btn_TempShowData3;
         Button btn_TempShowData4;
+        ImageButton ibtn_beerImage;
+        MediaPlayer mp_player;
         List<Origin> l_dataStoringList = new List<Origin>();
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,6 +41,8 @@ namespace BeerProcessingManager
             ViewPager pager = FindViewById<ViewPager>(Resource.Id.id_pager);
             GenericFragmentPagerAdaptor adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
 
+            mp_player = MediaPlayer.Create(this, Resource.Raw.beer_pour);
+
             // BASIC
             adaptor.AddFragmentView((i, v, b) =>
             {
@@ -45,6 +50,12 @@ namespace BeerProcessingManager
 
                 TextView textSample = view.FindViewById<TextView>(Resource.Id.id_txtBasic);
                 textSample.Text = IntroText();
+                ibtn_beerImage = view.FindViewById<ImageButton>(Resource.Id.id_imgBeer);
+                ibtn_beerImage.Click += (s, arg) =>
+                {
+                    Toast.MakeText(this, string.Format("CHEERS! ;)"), ToastLength.Long).Show();
+                    mp_player.Start();
+                };
 
                 return view;
             });
@@ -184,7 +195,7 @@ namespace BeerProcessingManager
                         Toast.MakeText(this, string.Format("Is about the data gathered from the Thingspeak."), ToastLength.Long).Show();
                         break;
                     case Resource.Id.choiceShowCharts:
-                        Toast.MakeText(this, string.Format("Provides charts created based on the DB data."), ToastLength.Long).Show();
+                        Toast.MakeText(this, string.Format("Provides charts, based on the DB data."), ToastLength.Long).Show();
                         break;
                     case Resource.Id.choiceModifyProcessing:
                         Toast.MakeText(this, string.Format("Delivers controll of process (danger boundaries)."), ToastLength.Long).Show();
