@@ -55,3 +55,4 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\ThingSpeakDotNetLibrary.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\drawable\beer.png
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\raw\beer_pour.wav
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\showchartspopup.xml

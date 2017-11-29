@@ -2135,11 +2135,6 @@ containing a value of this type.
         public static final int buttonPanel=0x7f0c003d;
         public static final int cancel_action=0x7f0c0070;
         public static final int checkbox=0x7f0c004d;
-        public static final int choiceBasic=0x7f0c0088;
-        public static final int choiceModifyProcessing=0x7f0c008b;
-        public static final int choiceModifyValve=0x7f0c008c;
-        public static final int choiceShowCharts=0x7f0c008a;
-        public static final int choiceShowData=0x7f0c0089;
         public static final int chronometer=0x7f0c0078;
         public static final int collapseActionView=0x7f0c002a;
         public static final int contentPanel=0x7f0c0040;
@@ -2158,21 +2153,34 @@ containing a value of this type.
         public static final int homeAsUp=0x7f0c0012;
         public static final int icon=0x7f0c003c;
         public static final int icon_group=0x7f0c007d;
+        public static final int id_btnChangeGraph=0x7f0c0080;
         public static final int id_btnPopupMenu=0x7f0c006a;
-        public static final int id_btnRetrieveFromTS=0x7f0c0081;
+        public static final int id_btnRetrieveFromTS=0x7f0c0083;
         public static final int id_btnRetrieveFromTS2=0x7f0c007f;
-        public static final int id_btnShowData1=0x7f0c0082;
-        public static final int id_btnShowData2=0x7f0c0083;
-        public static final int id_btnShowData3=0x7f0c0084;
-        public static final int id_btnShowData4=0x7f0c0085;
+        public static final int id_btnShowData1=0x7f0c0084;
+        public static final int id_btnShowData2=0x7f0c0085;
+        public static final int id_btnShowData3=0x7f0c0086;
+        public static final int id_btnShowData4=0x7f0c0087;
+        public static final int id_btnShowGraph=0x7f0c0081;
+        public static final int id_choiceAll=0x7f0c0093;
+        public static final int id_choiceBasic=0x7f0c008a;
+        public static final int id_choiceModifyProcessing=0x7f0c008d;
+        public static final int id_choiceModifyValve=0x7f0c008e;
+        public static final int id_choiceSensor1=0x7f0c008f;
+        public static final int id_choiceSensor2=0x7f0c0090;
+        public static final int id_choiceSensor3=0x7f0c0091;
+        public static final int id_choiceSensorAvg=0x7f0c0092;
+        public static final int id_choiceShowCharts=0x7f0c008c;
+        public static final int id_choiceShowData=0x7f0c008b;
+        public static final int id_clearAll=0x7f0c0094;
         public static final int id_imgBeer=0x7f0c0066;
         public static final int id_pager=0x7f0c006b;
-        public static final int id_plotView=0x7f0c0080;
+        public static final int id_plotView=0x7f0c0082;
         public static final int id_txtBasic=0x7f0c0065;
         public static final int id_txtView1=0x7f0c0067;
         public static final int id_txtView2=0x7f0c0068;
         public static final int id_txtView3=0x7f0c0069;
-        public static final int id_vwListShowData=0x7f0c0086;
+        public static final int id_vwListShowData=0x7f0c0088;
         public static final int ifRoom=0x7f0c002b;
         public static final int image=0x7f0c0039;
         public static final int info=0x7f0c0079;
@@ -2182,7 +2190,7 @@ containing a value of this type.
         public static final int listMode=0x7f0c000e;
         public static final int list_item=0x7f0c003b;
         public static final int media_actions=0x7f0c0072;
-        public static final int message=0x7f0c0087;
+        public static final int message=0x7f0c0089;
         public static final int middle=0x7f0c0022;
         public static final int multiply=0x7f0c0018;
         public static final int never=0x7f0c002c;
@@ -2306,6 +2314,7 @@ containing a value of this type.
     }
     public static final class menu {
         public static final int mainpopup=0x7f0e0000;
+        public static final int showchartspopup=0x7f0e0001;
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;

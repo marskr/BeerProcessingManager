@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/choiceBasic"
+        android:id="@+id/id_choiceBasic"
         android:title="BASIC"/>
     <item
-        android:id="@+id/choiceShowData"
+        android:id="@+id/id_choiceShowData"
         android:title="SHOW DATA"/>
     <item
-        android:id="@+id/choiceShowCharts"
+        android:id="@+id/id_choiceShowCharts"
         android:title="SHOW CHARTS"/>
     <item
-        android:id="@+id/choiceModifyProcessing"
+        android:id="@+id/id_choiceModifyProcessing"
         android:title="PROCESSING"/>
     <item
-        android:id="@+id/choiceModifyValve"
+        android:id="@+id/id_choiceModifyValve"
         android:title="VALVE"/>
 </menu>

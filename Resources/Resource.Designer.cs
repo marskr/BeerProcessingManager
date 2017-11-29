@@ -1915,21 +1915,6 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0c004d
 			public const int checkbox = 2131492941;
 			
-			// aapt resource value: 0x7f0c0088
-			public const int choiceBasic = 2131493000;
-			
-			// aapt resource value: 0x7f0c008b
-			public const int choiceModifyProcessing = 2131493003;
-			
-			// aapt resource value: 0x7f0c008c
-			public const int choiceModifyValve = 2131493004;
-			
-			// aapt resource value: 0x7f0c008a
-			public const int choiceShowCharts = 2131493002;
-			
-			// aapt resource value: 0x7f0c0089
-			public const int choiceShowData = 2131493001;
-			
 			// aapt resource value: 0x7f0c0078
 			public const int chronometer = 2131492984;
 			
@@ -1984,26 +1969,65 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0c007d
 			public const int icon_group = 2131492989;
 			
+			// aapt resource value: 0x7f0c0080
+			public const int id_btnChangeGraph = 2131492992;
+			
 			// aapt resource value: 0x7f0c006a
 			public const int id_btnPopupMenu = 2131492970;
 			
-			// aapt resource value: 0x7f0c0081
-			public const int id_btnRetrieveFromTS = 2131492993;
+			// aapt resource value: 0x7f0c0083
+			public const int id_btnRetrieveFromTS = 2131492995;
 			
 			// aapt resource value: 0x7f0c007f
 			public const int id_btnRetrieveFromTS2 = 2131492991;
 			
-			// aapt resource value: 0x7f0c0082
-			public const int id_btnShowData1 = 2131492994;
-			
-			// aapt resource value: 0x7f0c0083
-			public const int id_btnShowData2 = 2131492995;
-			
 			// aapt resource value: 0x7f0c0084
-			public const int id_btnShowData3 = 2131492996;
+			public const int id_btnShowData1 = 2131492996;
 			
 			// aapt resource value: 0x7f0c0085
-			public const int id_btnShowData4 = 2131492997;
+			public const int id_btnShowData2 = 2131492997;
+			
+			// aapt resource value: 0x7f0c0086
+			public const int id_btnShowData3 = 2131492998;
+			
+			// aapt resource value: 0x7f0c0087
+			public const int id_btnShowData4 = 2131492999;
+			
+			// aapt resource value: 0x7f0c0081
+			public const int id_btnShowGraph = 2131492993;
+			
+			// aapt resource value: 0x7f0c0093
+			public const int id_choiceAll = 2131493011;
+			
+			// aapt resource value: 0x7f0c008a
+			public const int id_choiceBasic = 2131493002;
+			
+			// aapt resource value: 0x7f0c008d
+			public const int id_choiceModifyProcessing = 2131493005;
+			
+			// aapt resource value: 0x7f0c008e
+			public const int id_choiceModifyValve = 2131493006;
+			
+			// aapt resource value: 0x7f0c008f
+			public const int id_choiceSensor1 = 2131493007;
+			
+			// aapt resource value: 0x7f0c0090
+			public const int id_choiceSensor2 = 2131493008;
+			
+			// aapt resource value: 0x7f0c0091
+			public const int id_choiceSensor3 = 2131493009;
+			
+			// aapt resource value: 0x7f0c0092
+			public const int id_choiceSensorAvg = 2131493010;
+			
+			// aapt resource value: 0x7f0c008c
+			public const int id_choiceShowCharts = 2131493004;
+			
+			// aapt resource value: 0x7f0c008b
+			public const int id_choiceShowData = 2131493003;
+			
+			// aapt resource value: 0x7f0c0094
+			public const int id_clearAll = 2131493012;
 			
 			// aapt resource value: 0x7f0c0066
 			public const int id_imgBeer = 2131492966;
@@ -2011,8 +2035,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0c006b
 			public const int id_pager = 2131492971;
 			
-			// aapt resource value: 0x7f0c0080
-			public const int id_plotView = 2131492992;
+			// aapt resource value: 0x7f0c0082
+			public const int id_plotView = 2131492994;
 			
 			// aapt resource value: 0x7f0c0065
 			public const int id_txtBasic = 2131492965;
@@ -2026,8 +2050,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0c0069
 			public const int id_txtView3 = 2131492969;
 			
-			// aapt resource value: 0x7f0c0086
-			public const int id_vwListShowData = 2131492998;
+			// aapt resource value: 0x7f0c0088
+			public const int id_vwListShowData = 2131493000;
 			
 			// aapt resource value: 0x7f0c002b
 			public const int ifRoom = 2131492907;
@@ -2056,8 +2080,8 @@ namespace BeerProcessingManager
 			// aapt resource value: 0x7f0c0072
 			public const int media_actions = 2131492978;
 			
-			// aapt resource value: 0x7f0c0087
-			public const int message = 2131492999;
+			// aapt resource value: 0x7f0c0089
+			public const int message = 2131493001;
 			
 			// aapt resource value: 0x7f0c0022
 			public const int middle = 2131492898;
@@ -2448,6 +2472,9 @@ namespace BeerProcessingManager
 			
 			// aapt resource value: 0x7f0e0000
 			public const int MainPopup = 2131623936;
+			
+			// aapt resource value: 0x7f0e0001
+			public const int ShowChartsPopup = 2131623937;
 			
 			static Menu()
 			{

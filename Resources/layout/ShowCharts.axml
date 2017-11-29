@@ -4,30 +4,44 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:minHeight="500px">
+    android:minHeight="800px">
     <LinearLayout
-      android:orientation="vertical"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:minWidth="25px"
-      android:minHeight="100px">
-      <Button
-        android:id="@+id/id_btnRetrieveFromTS2"
+        android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Get from Thingspeak!"
-        android:layout_weight="1" />
-    </LinearLayout> 
+        android:layout_weight="1"
+        android:minWidth="25px"
+        android:minHeight="400px">
+        <Button
+            android:id="@+id/id_btnRetrieveFromTS2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Get from Thingspeak!"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/id_btnChangeGraph"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Choose chart!"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/id_btnShowGraph"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Show chart!"
+            android:layout_weight="1" />
+    </LinearLayout>
     <LinearLayout
-      android:orientation="vertical"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:minWidth="25px"
-      android:minHeight="400px">
-      <OxyPlot.Xamarin.Android.PlotView
-        android:id="@+id/id_plotView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:minWidth="25px"
+        android:minHeight="400px"
+        android:layout_weight="1">
+        <OxyPlot.Xamarin.Android.PlotView
+            android:id="@+id/id_plotView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
 </LinearLayout>

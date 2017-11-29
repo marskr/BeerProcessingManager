@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+      android:id="@+id/id_choiceSensor1"
+      android:title="SENSOR 1"/>
+  <item
+      android:id="@+id/id_choiceSensor2"
+      android:title="SENSOR 2"/>
+  <item
+      android:id="@+id/id_choiceSensor3"
+      android:title="SENSOR 3"/>
+  <item
+      android:id="@+id/id_choiceSensorAvg"
+      android:title="SENSOR AVG"/>
+  <item
+      android:id="@+id/id_choiceAll"
+      android:title="ALL"/>
+  <item
+      android:id="@+id/id_clearAll"
+      android:title="CLEAR"/>
+</menu>

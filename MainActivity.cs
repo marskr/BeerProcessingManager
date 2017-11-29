@@ -18,8 +18,10 @@ namespace BeerProcessingManager
     public class MainActivity : FragmentActivity
     {
         Button btn_PopupMenu;
+        Button btn_PopupShowCharts;
         Button btn_RetrieveFromTS;
         Button btn_RetrieveFromTS2;
+        Button btn_ShowCharts;
         Button btn_TempShowData1;
         Button btn_TempShowData2;
         Button btn_TempShowData3;
@@ -27,6 +29,7 @@ namespace BeerProcessingManager
         ImageButton ibtn_beerImage;
         MediaPlayer mp_player;
         List<Origin> l_dataStoringList = new List<Origin>();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -42,6 +45,7 @@ namespace BeerProcessingManager
             GenericFragmentPagerAdaptor adaptor = new GenericFragmentPagerAdaptor(SupportFragmentManager);
 
             mp_player = MediaPlayer.Create(this, Resource.Raw.beer_pour);
+            SingletonOxy.Instance.i_Plotchoice = 0;
 
             // BASIC
             adaptor.AddFragmentView((i, v, b) =>
@@ -51,11 +55,7 @@ namespace BeerProcessingManager
                 TextView textSample = view.FindViewById<TextView>(Resource.Id.id_txtBasic);
                 textSample.Text = IntroText();
                 ibtn_beerImage = view.FindViewById<ImageButton>(Resource.Id.id_imgBeer);
-                ibtn_beerImage.Click += (s, arg) =>
-                {
-                    Toast.MakeText(this, string.Format("CHEERS! ;)"), ToastLength.Long).Show();
-                    mp_player.Start();
-                };
+                ibtn_beerImage.Click += ShowCheers;
 
                 return view;
             });
@@ -75,10 +75,9 @@ namespace BeerProcessingManager
                         l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
-                    catch /*(Exception ex)*/
+                    catch
                     {
                         Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
-                        //Toast.MakeText(this, string.Format("The exception occured: {0}", ex.ToString()), ToastLength.Long).Show();
                     }
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 5);
@@ -88,8 +87,6 @@ namespace BeerProcessingManager
                 btn_TempShowData1.Click += (s, arg) =>
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
-                    //List<Origin> l_dataStoringList = new List<Origin>();
-                    //l_dataStoringList = DataStorage.ArtificialList();
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 1);
                     viewList.Adapter = adapter;
@@ -126,23 +123,30 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ShowCharts, v, false);
-
+                
                 btn_RetrieveFromTS2 = view.FindViewById<Button>(Resource.Id.id_btnRetrieveFromTS2);
                 btn_RetrieveFromTS2.Click += async (s, arg) =>
                 {
-                    PlotView viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
                     try
                     {
                         ThingSpeakData feeds = await DataStorage.ReadThingspeak();
-                        l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
+                        l_dataStoringList = DataStorage.ThingspeakConverter(feeds);
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
-                    catch /*(Exception ex)*/
+                    catch
                     {
                         Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
                     }
+                };
+                btn_PopupShowCharts = view.FindViewById<Button>(Resource.Id.id_btnChangeGraph);
+                btn_PopupShowCharts.Click += ShowPopupCharts;
 
-                    viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
+                btn_ShowCharts = view.FindViewById<Button>(Resource.Id.id_btnShowGraph);
+                btn_ShowCharts.Click += (s, arg) =>
+                {
+                    /*PlotView viewPlot*/
+                    SingletonOxy.Instance.viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
+                    SingletonOxy.Instance.viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
                 };
 
                 return view;
@@ -152,6 +156,7 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ModifyProcessing, v, false);
+
                 return view;
             });
 
@@ -159,11 +164,14 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ModifyValve, v, false);
+
                 return view;
             });
 
             pager.Adapter = adaptor;
+#pragma warning disable CS0618 // Type or member is obsolete
             pager.SetOnPageChangeListener(listener: new ViewPageListenerForActionBar(ActionBar));
+#pragma warning restore CS0618 // Type or member is obsolete
 
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "BASIC"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "SHOW DATA"));
@@ -171,6 +179,7 @@ namespace BeerProcessingManager
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "PROCESSING"));
             ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "VALVE"));
         }
+
         private string IntroText()
         {
             return " This application so - called 'BeerProcessingManager'  " +
@@ -179,6 +188,7 @@ namespace BeerProcessingManager
                    "https://github.com/marskr/BeerProcessingManager \n" +
                    "Please use 'CLICK ME' button to get more info!";
         }
+
         private void ShowPopupMenu(object sender, EventArgs e)
         {
             PopupMenu menu = new PopupMenu(this, btn_PopupMenu);
@@ -188,19 +198,19 @@ namespace BeerProcessingManager
             {
                 switch (arg.Item.ItemId)
                 {
-                    case Resource.Id.choiceBasic:
+                    case Resource.Id.id_choiceBasic:
                         Toast.MakeText(this, string.Format("Contains basic informations about the application." /*arg.Item.TitleFormatted*/), ToastLength.Long).Show();
                         break;
-                    case Resource.Id.choiceShowData:
+                    case Resource.Id.id_choiceShowData:
                         Toast.MakeText(this, string.Format("Is about the data gathered from the Thingspeak."), ToastLength.Long).Show();
                         break;
-                    case Resource.Id.choiceShowCharts:
+                    case Resource.Id.id_choiceShowCharts:
                         Toast.MakeText(this, string.Format("Provides charts, based on the DB data."), ToastLength.Long).Show();
                         break;
-                    case Resource.Id.choiceModifyProcessing:
+                    case Resource.Id.id_choiceModifyProcessing:
                         Toast.MakeText(this, string.Format("Delivers controll of process (danger boundaries)."), ToastLength.Long).Show();
                         break;
-                    case Resource.Id.choiceModifyValve:
+                    case Resource.Id.id_choiceModifyValve:
                         Toast.MakeText(this, string.Format("Delivers controll of process (valve controls)."), ToastLength.Long).Show();
                         break;
                     default:
@@ -209,12 +219,60 @@ namespace BeerProcessingManager
                 }
             };
 
-            //menu.DismissEvent += (s, arg) =>
-            //{
-            //    Toast.MakeText(this, string.Format("Menu dissmissed"), ToastLength.Short).Show();
-            //};
+            menu.DismissEvent += (s, arg) =>
+            {
+                Toast.MakeText(this, string.Format("Menu dissmissed"), ToastLength.Short).Show();
+            };
 
             menu.Show();
+        }
+
+        private void ShowCheers(object sender, EventArgs e)
+        {
+            Toast.MakeText(this, string.Format("CHEERS! ;)"), ToastLength.Long).Show();
+            mp_player.Start();
+        }
+
+        private void ShowPopupCharts(object sender, EventArgs e)
+        {
+            PopupMenu menu2 = new PopupMenu(this, btn_PopupShowCharts);
+            menu2.MenuInflater.Inflate(Resource.Menu.ShowChartsPopup, menu2.Menu);
+
+            menu2.MenuItemClick += (s, arg) =>
+            {
+                switch (arg.Item.ItemId)
+                {
+                    case Resource.Id.id_choiceSensor1:
+                        SingletonOxy.Instance.i_Plotchoice = 1;
+                        Toast.MakeText(this, string.Format("Graph 1!"), ToastLength.Short).Show();
+                        break;
+                    case Resource.Id.id_choiceSensor2:
+                        SingletonOxy.Instance.i_Plotchoice = 2;
+                        Toast.MakeText(this, string.Format("Graph 2!"), ToastLength.Short).Show();
+                        break;
+                    case Resource.Id.id_choiceSensor3:
+                        SingletonOxy.Instance.i_Plotchoice = 3;
+                        Toast.MakeText(this, string.Format("Graph 3!"), ToastLength.Short).Show();
+                        break;
+                    case Resource.Id.id_choiceSensorAvg:
+                        SingletonOxy.Instance.i_Plotchoice = 4;
+                        Toast.MakeText(this, string.Format("Graph Avg!"), ToastLength.Short).Show();
+                        break;
+                    case Resource.Id.id_choiceAll:
+                        SingletonOxy.Instance.i_Plotchoice = 0;
+                        Toast.MakeText(this, string.Format("All graphs!"), ToastLength.Short).Show();
+                        break;
+                    case Resource.Id.id_clearAll:
+                        SingletonOxy.Instance.i_Plotchoice = -1;
+                        Toast.MakeText(this, string.Format("Remove graphs!"), ToastLength.Short).Show();
+                        break;
+                    default:
+                        Toast.MakeText(this, string.Format("UNKNOWN SELECTION", arg.Item.TitleFormatted), ToastLength.Short).Show();
+                        break;
+                }
+            };
+
+            menu2.Show();
         }
     }
 }
