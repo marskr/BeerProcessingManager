@@ -8,9 +8,9 @@ using OxyPlot.Xamarin.Android;
 using System.Collections.Generic;
 using BeerProcessingManager.ThingspeakManagement;
 using BeerProcessingManager.PlotManagement;
-using BeerProcessingManager.LogManagement;
 using ThingSpeakWinRT;
 using Android.Media;
+using BeerProcessingManager.MainActivityResorces;
 
 namespace BeerProcessingManager
 {
@@ -29,6 +29,7 @@ namespace BeerProcessingManager
         ImageButton ibtn_beerImage;
         MediaPlayer mp_player;
         List<Origin> l_dataStoringList = new List<Origin>();
+        string[] s_arrangementTab = new string[] { "BASIC", "SHOW DATA", "SHOW CHARTS", "PROCESSING", "VALVE"};
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -53,7 +54,7 @@ namespace BeerProcessingManager
                 var view = i.Inflate(Resource.Layout.Basic, v, false);
 
                 TextView textSample = view.FindViewById<TextView>(Resource.Id.id_txtBasic);
-                textSample.Text = IntroText();
+                textSample.Text = AdditionalResource.IntroText();
                 ibtn_beerImage = view.FindViewById<ImageButton>(Resource.Id.id_imgBeer);
                 ibtn_beerImage.Click += ShowCheers;
 
@@ -144,7 +145,6 @@ namespace BeerProcessingManager
                 btn_ShowCharts = view.FindViewById<Button>(Resource.Id.id_btnShowGraph);
                 btn_ShowCharts.Click += (s, arg) =>
                 {
-                    /*PlotView viewPlot*/
                     SingletonOxy.Instance.viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
                     SingletonOxy.Instance.viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
                 };
@@ -173,20 +173,10 @@ namespace BeerProcessingManager
             pager.SetOnPageChangeListener(listener: new ViewPageListenerForActionBar(ActionBar));
 #pragma warning restore CS0618 // Type or member is obsolete
 
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "BASIC"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "SHOW DATA"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "SHOW CHARTS"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "PROCESSING"));
-            ActionBar.AddTab(pager.GetViewPageTab(ActionBar, "VALVE"));
-        }
-
-        private string IntroText()
-        {
-            return " This application so - called 'BeerProcessingManager'  " +
-                   "was designed by Marcin Skryśkiewicz.\n " +
-                   "The source code is stored in GitHub:\n " +
-                   "https://github.com/marskr/BeerProcessingManager \n" +
-                   "Please use 'CLICK ME' button to get more info!";
+            foreach(var element in s_arrangementTab)
+            {
+                ActionBar.AddTab(pager.GetViewPageTab(ActionBar, element));
+            }
         }
 
         private void ShowPopupMenu(object sender, EventArgs e)
@@ -199,7 +189,7 @@ namespace BeerProcessingManager
                 switch (arg.Item.ItemId)
                 {
                     case Resource.Id.id_choiceBasic:
-                        Toast.MakeText(this, string.Format("Contains basic informations about the application." /*arg.Item.TitleFormatted*/), ToastLength.Long).Show();
+                        Toast.MakeText(this, string.Format("Contains basic informations about the application."), ToastLength.Long).Show();
                         break;
                     case Resource.Id.id_choiceShowData:
                         Toast.MakeText(this, string.Format("Is about the data gathered from the Thingspeak."), ToastLength.Long).Show();
@@ -219,10 +209,10 @@ namespace BeerProcessingManager
                 }
             };
 
-            menu.DismissEvent += (s, arg) =>
-            {
-                Toast.MakeText(this, string.Format("Menu dissmissed"), ToastLength.Short).Show();
-            };
+            //menu.DismissEvent += (s, arg) =>
+            //{
+            //    Toast.MakeText(this, string.Format("Menu dissmissed"), ToastLength.Short).Show();
+            //};
 
             menu.Show();
         }

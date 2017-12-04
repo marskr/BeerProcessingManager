@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Android.App;
 using Android.OS;
 using Android.Views;
@@ -12,10 +11,8 @@ namespace BeerProcessingManager
     public class GenericFragmentPagerAdaptor : FragmentPagerAdapter
     {
         private List<Android.Support.V4.App.Fragment> _fragmentList = new List<Android.Support.V4.App.Fragment>();
-        public GenericFragmentPagerAdaptor(Android.Support.V4.App.FragmentManager fm) : base(fm)
-        {
 
-        }
+        public GenericFragmentPagerAdaptor(Android.Support.V4.App.FragmentManager fm) : base(fm){}
 
         public void AddFragmentView(Func<LayoutInflater, ViewGroup, Bundle, View> view)
         {

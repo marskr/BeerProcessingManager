@@ -37,6 +37,7 @@ namespace BeerProcessingManager.PlotManagement
             }
         }
     }
+
     public class PlotManager
     {
         public static PlotModel CreatePlotModel(List<Origin> l_dataStoringList)
@@ -48,7 +49,6 @@ namespace BeerProcessingManager.PlotManagement
                                                           SingletonOxy.Instance.ChartSettingsColor);
                 SingletonOxy.Instance.b_axesCreate = true;
             }
-                
 
             SingletonOxy.Instance.plotModel = SeriesOps(l_dataStoringList, 
                                                         SingletonOxy.Instance.ChartColor1,
@@ -95,9 +95,11 @@ namespace BeerProcessingManager.PlotManagement
             return plotModel;
         }
 
-        public static PlotModel SeriesOps(/*PlotModel plotModel,*/ List<Origin> l_dataStoringList,
-                                          OxyColor ChartColor1, OxyColor ChartColor2, 
-                                          OxyColor ChartColor3, OxyColor ChartColor4)
+        public static PlotModel SeriesOps(List<Origin> l_dataStoringList,
+                                          OxyColor ChartColor1, 
+                                          OxyColor ChartColor2, 
+                                          OxyColor ChartColor3, 
+                                          OxyColor ChartColor4)
         {
             SingletonOxy.Instance.plotModel.DefaultColors = new List<OxyColor>
             {

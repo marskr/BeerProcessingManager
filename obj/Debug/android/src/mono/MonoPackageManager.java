@@ -107,6 +107,8 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "BeerProcessingManager.dll" comes first in this list. */
 		"BeerProcessingManager.dll",
+		"M2Mqtt.Net.dll",
+		"M2Mqtt.NetCf39.dll",
 		"Newtonsoft.Json.dll",
 		"OxyPlot.dll",
 		"OxyPlot.Xamarin.Android.dll",

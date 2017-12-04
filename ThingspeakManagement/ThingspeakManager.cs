@@ -40,13 +40,19 @@ namespace BeerProcessingManager.ThingspeakManagement
             }
             return l_dataStoringList;
         }
-        private static List<Origin> AddToList(List<Origin> l_dataStoringList, int i_element0_measNo,
-                                              double d_element1_time, double d_element2_temp, 
-                                              double d_element3_temp, double d_element4_temp)
+        private static List<Origin> AddToList(List<Origin> l_dataStoringList, 
+                                              int i_element0_measNo,
+                                              double d_element1_time, 
+                                              double d_element2_temp, 
+                                              double d_element3_temp, 
+                                              double d_element4_temp)
         {
             Origin item = new Origin { i_MeasureNo = i_element0_measNo,
-                                       d_Time = d_element1_time, d_FirSensorTemp = d_element2_temp,
-                                       d_SecSensorTemp = d_element3_temp, d_ThiSensorTemp = d_element4_temp };
+                                       d_Time = d_element1_time,
+                                       d_FirSensorTemp = d_element2_temp,
+                                       d_SecSensorTemp = d_element3_temp,
+                                       d_ThiSensorTemp = d_element4_temp
+            };
             item.d_AvgSensorTemp = Math.Round((item.d_FirSensorTemp + item.d_SecSensorTemp + 
                                     item.d_ThiSensorTemp) / 3, 2, MidpointRounding.AwayFromZero);
 
