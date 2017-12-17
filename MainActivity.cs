@@ -76,9 +76,10 @@ namespace BeerProcessingManager
                         l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
-                    catch
+                    catch /*(Exception ex)*/
                     {
                         Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
+                        //Toast.MakeText(this, string.Format(ex.ToString()), ToastLength.Long).Show();
                     }
 
                     var adapter = new VwAdapter(this, l_dataStoringList, 5);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using ThingSpeakWinRT;
 
@@ -32,11 +33,11 @@ namespace BeerProcessingManager.ThingspeakManagement
             foreach (var element in feeds.Feeds)
             {
                 l_dataStoringList = AddToList(l_dataStoringList, 
-                                              (element.EntryId == null) ? 0 : Convert.ToInt32(element.EntryId), 
-                                              (element.Field5 == null) ? 0 : Convert.ToDouble(element.Field5), 
-                                              (element.Field1 == null) ? 0 : Convert.ToDouble(element.Field1),
-                                              (element.Field2 == null) ? 0 : Convert.ToDouble(element.Field2),
-                                              (element.Field2 == null) ? 0 : Convert.ToDouble(element.Field2));
+                                              element.EntryId ?? 0,
+                                              (element.Field5 == null) ? 0 : Double.Parse(element.Field5, CultureInfo.InvariantCulture),
+                                              (element.Field1 == null) ? 0 : Double.Parse(element.Field1, CultureInfo.InvariantCulture),
+                                              (element.Field2 == null) ? 0 : Double.Parse(element.Field2, CultureInfo.InvariantCulture),
+                                              (element.Field3 == null) ? 0 : Double.Parse(element.Field3, CultureInfo.InvariantCulture));
             }
             return l_dataStoringList;
         }
