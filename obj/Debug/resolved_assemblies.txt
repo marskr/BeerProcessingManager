@@ -10,8 +10,7 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.d
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.IO.Compression.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Net.Http.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Xml.dll
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\M2Mqtt.Net.dll
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\M2Mqtt.NetCf39.dll
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\mscorlib.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Newtonsoft.Json.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.Xamarin.Android.dll
@@ -28,7 +27,6 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.Android.Support.v4.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.Android.Support.v7.AppCompat.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\Xamarin.Android.Support.Vector.Drawable.dll
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\mscorlib.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\ThingSpeakDotNetLibrary.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.Runtime.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\System.ComponentModel.Composition.dll

@@ -53,12 +53,6 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="M2Mqtt.Net">
-      <HintPath>..\packages\M2Mqtt.4.2.0.0\lib\net45\M2Mqtt.Net.dll</HintPath>
-    </Reference>
-    <Reference Include="M2Mqtt.NetCf39, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\M2Mqtt.4.2.0.0\lib\netcf39\M2Mqtt.NetCf39.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Data.Sqlite" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

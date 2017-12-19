@@ -5,7 +5,6 @@ using Android.Support.V4.App;
 using Android.Support.V4.View;
 using System;
 using OxyPlot.Xamarin.Android;
-using System.Collections.Generic;
 using BeerProcessingManager.ThingspeakManagement;
 using BeerProcessingManager.PlotManagement;
 using ThingSpeakWinRT;
@@ -15,7 +14,7 @@ using BeerProcessingManager.MainActivityResorces;
 namespace BeerProcessingManager
 {
     [Activity(Label = "BeerProcessingManager", MainLauncher = true)]
-    public class MainActivity : FragmentActivity
+    public class MainActivity : FragmentActivity, SeekBar.IOnSeekBarChangeListener
     {
         Button btn_PopupMenu;
         Button btn_PopupShowCharts;
@@ -28,7 +27,7 @@ namespace BeerProcessingManager
         Button btn_TempShowData4;
         ImageButton ibtn_beerImage;
         MediaPlayer mp_player;
-        List<Origin> l_dataStoringList = new List<Origin>();
+        TextView viewText;
         string[] s_arrangementTab = new string[] { "BASIC", "SHOW DATA", "SHOW CHARTS", "PROCESSING", "VALVE"};
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -72,8 +71,9 @@ namespace BeerProcessingManager
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
                     try
                     {
+                        SingletonTSList.Instance.l_dataStoringList.Clear();
                         ThingSpeakData feeds = await DataStorage.ReadThingspeak();
-                        l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
+                        SingletonTSList.Instance.l_dataStoringList = DataStorage.ThingspeakConverter(feeds); //DataStorage.ArtificialList();
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
                     catch /*(Exception ex)*/
@@ -82,7 +82,7 @@ namespace BeerProcessingManager
                         //Toast.MakeText(this, string.Format(ex.ToString()), ToastLength.Long).Show();
                     }
 
-                    var adapter = new VwAdapter(this, l_dataStoringList, 5);
+                    var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 5);
                     viewList.Adapter = adapter;
                 };
                 btn_TempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData1);
@@ -90,7 +90,7 @@ namespace BeerProcessingManager
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
 
-                    var adapter = new VwAdapter(this, l_dataStoringList, 1);
+                    var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 1);
                     viewList.Adapter = adapter;
                 };
                 btn_TempShowData2 = view.FindViewById<Button>(Resource.Id.id_btnShowData2);
@@ -98,7 +98,7 @@ namespace BeerProcessingManager
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
 
-                    var adapter = new VwAdapter(this, l_dataStoringList, 2);
+                    var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 2);
                     viewList.Adapter = adapter;
                 };
                 btn_TempShowData3 = view.FindViewById<Button>(Resource.Id.id_btnShowData3);
@@ -106,7 +106,7 @@ namespace BeerProcessingManager
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
 
-                    var adapter = new VwAdapter(this, l_dataStoringList, 3);
+                    var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 3);
                     viewList.Adapter = adapter;
                 };
                 btn_TempShowData4 = view.FindViewById<Button>(Resource.Id.id_btnShowData4);
@@ -114,7 +114,7 @@ namespace BeerProcessingManager
                 {
                     ListView viewList = view.FindViewById<ListView>(Resource.Id.id_vwListShowData);
 
-                    var adapter = new VwAdapter(this, l_dataStoringList, 4);
+                    var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 4);
                     viewList.Adapter = adapter;
                 };
 
@@ -131,8 +131,9 @@ namespace BeerProcessingManager
                 {
                     try
                     {
+                        SingletonTSList.Instance.l_dataStoringList.Clear();
                         ThingSpeakData feeds = await DataStorage.ReadThingspeak();
-                        l_dataStoringList = DataStorage.ThingspeakConverter(feeds);
+                        SingletonTSList.Instance.l_dataStoringList = DataStorage.ThingspeakConverter(feeds);
                         Toast.MakeText(this, string.Format("DATA OBTAINED!"), ToastLength.Long).Show();
                     }
                     catch
@@ -147,7 +148,7 @@ namespace BeerProcessingManager
                 btn_ShowCharts.Click += (s, arg) =>
                 {
                     SingletonOxy.Instance.viewPlot = view.FindViewById<PlotView>(Resource.Id.id_plotView);
-                    SingletonOxy.Instance.viewPlot.Model = PlotManager.CreatePlotModel(l_dataStoringList);
+                    SingletonOxy.Instance.viewPlot.Model = PlotManager.CreatePlotModel(SingletonTSList.Instance.l_dataStoringList);
                 };
 
                 return view;
@@ -157,6 +158,12 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ModifyProcessing, v, false);
+
+                SeekBar seekBar = view.FindViewById<SeekBar>(Resource.Id.id_seekBar);
+                viewText = view.FindViewById<TextView>(Resource.Id.id_txtSeekBar);
+                viewText.Text = "0";
+
+                seekBar.SetOnSeekBarChangeListener(this);
 
                 return view;
             });
@@ -264,6 +271,22 @@ namespace BeerProcessingManager
             };
 
             menu2.Show();
+        }
+
+        public void OnProgressChanged(SeekBar seekBar, int progress, bool fromUser)
+        {
+            if(fromUser)
+                viewText.Text = string.Format("The value of toolbar is {0}", progress);
+        }
+
+        public void OnStartTrackingTouch(SeekBar seekBar)
+        {
+            //
+        }
+
+        public void OnStopTrackingTouch(SeekBar seekBar)
+        {
+            //
         }
     }
 }

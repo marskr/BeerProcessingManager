@@ -51,10 +51,6 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\uploadflags.txt
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\drawable\beer.png
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\raw\beer_pour.wav
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\showchartspopup.xml
-D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.Net.dll
-D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.NetCf39.dll
-D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.Net.pdb
-D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.NetCf39.pdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.Net.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.NetCf39.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\ThingSpeakDotNetLibrary.dll.mdb

@@ -6,6 +6,29 @@ using ThingSpeakWinRT;
 
 namespace BeerProcessingManager.ThingspeakManagement
 {
+    public sealed class SingletonTSList
+    {
+        private static SingletonTSList SingletonInstance = null;
+        private static readonly object Lock = new object();
+
+        public List<Origin> l_dataStoringList = new List<Origin>();
+
+        public static SingletonTSList Instance
+        {
+            get
+            {
+                lock (Lock)
+                {
+                    if (SingletonInstance == null)
+                    {
+                        SingletonInstance = new SingletonTSList();
+                    }
+                    return SingletonInstance;
+                }
+            }
+        }
+    }
+
     public class DataStorage
     {
         private const string s_writeAPIKey = "92XHIDTJ9UPNL727";
