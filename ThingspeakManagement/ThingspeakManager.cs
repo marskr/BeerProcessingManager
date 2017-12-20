@@ -13,6 +13,8 @@ namespace BeerProcessingManager.ThingspeakManagement
 
         public List<Origin> l_dataStoringList = new List<Origin>();
 
+        public Watchdog st_WatchdogStorage = new Watchdog();
+
         public static SingletonTSList Instance
         {
             get
@@ -91,6 +93,7 @@ namespace BeerProcessingManager.ThingspeakManagement
             return feeds;
         }
     }
+
     public class Origin
     {
         public int i_Id { get; set; }
@@ -105,5 +108,11 @@ namespace BeerProcessingManager.ThingspeakManagement
         //    get { return i_measureNo; }
         //    set { i_measureNo = value; }
         //}
+    }
+
+    public class Watchdog
+    {
+        public int i_FirstskBar { get; set; }
+        public int i_SecondskBar { get; set; }
     }
 }

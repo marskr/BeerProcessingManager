@@ -25,9 +25,11 @@ namespace BeerProcessingManager
         Button btn_TempShowData2;
         Button btn_TempShowData3;
         Button btn_TempShowData4;
+        Button btn_LaunchWatchdog;
         ImageButton ibtn_beerImage;
         MediaPlayer mp_player;
-        TextView viewText;
+        TextView viewText1, viewText2;
+        SeekBar seekBar1, seekBar2;
         string[] s_arrangementTab = new string[] { "BASIC", "SHOW DATA", "SHOW CHARTS", "PROCESSING", "VALVE"};
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -159,11 +161,30 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ModifyProcessing, v, false);
 
-                SeekBar seekBar = view.FindViewById<SeekBar>(Resource.Id.id_seekBar);
-                viewText = view.FindViewById<TextView>(Resource.Id.id_txtSeekBar);
-                viewText.Text = "0";
+                seekBar1 = view.FindViewById<SeekBar>(Resource.Id.id_skbHigherBoundary);
+                viewText1 = view.FindViewById<TextView>(Resource.Id.id_txtSeekBarHighB);
+                viewText1.Text = "0";
 
-                seekBar.SetOnSeekBarChangeListener(this);
+                seekBar2 = view.FindViewById<SeekBar>(Resource.Id.id_skbLowerBoundary);
+                viewText2 = view.FindViewById<TextView>(Resource.Id.id_txtSeekBarLowB);
+                viewText2.Text = "0";
+
+                seekBar1.SetOnSeekBarChangeListener(this);
+                seekBar2.SetOnSeekBarChangeListener(this);
+
+                btn_LaunchWatchdog = view.FindViewById<Button>(Resource.Id.id_btnLaunchWG);
+                btn_LaunchWatchdog.Click += (s, arg) =>
+                {
+                    int i_vwTxt1 = 0, i_vwTxt2 = 0;
+                    if (!Int32.TryParse(viewText1.Text, out i_vwTxt1))
+                        Toast.MakeText(this, string.Format("Problem with parsing text value."), ToastLength.Long).Show();
+
+                    if(!Int32.TryParse(viewText2.Text, out i_vwTxt2))
+                        Toast.MakeText(this, string.Format("Problem with parsing text value."), ToastLength.Long).Show();
+
+                    SingletonTSList.Instance.st_WatchdogStorage.i_FirstskBar = i_vwTxt1;
+                    SingletonTSList.Instance.st_WatchdogStorage.i_SecondskBar = i_vwTxt2;
+                };
 
                 return view;
             });
@@ -275,8 +296,17 @@ namespace BeerProcessingManager
 
         public void OnProgressChanged(SeekBar seekBar, int progress, bool fromUser)
         {
-            if(fromUser)
-                viewText.Text = string.Format("The value of toolbar is {0}", progress);
+            if (fromUser)
+            {
+                if(seekBar.Equals(seekBar1))
+                {
+                    viewText1.Text = string.Format(progress.ToString());
+                }
+                else if (seekBar.Equals(seekBar2))
+                {
+                    viewText2.Text = string.Format(progress.ToString());
+                }
+            }
         }
 
         public void OnStartTrackingTouch(SeekBar seekBar)
