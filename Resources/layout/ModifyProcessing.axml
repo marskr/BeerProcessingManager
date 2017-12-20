@@ -62,10 +62,10 @@
         android:id="@+id/id_space1" />
     <Button
         android:gravity="center"
-        android:text="Launch watchdog!"
+        android:text="Get timestamp from service!"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/id_btnLaunchWG" />
+        android:id="@+id/id_btnServiceTimestamp" />
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,4 +77,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/id_btnStopWG" />
+    <android.support.v4.widget.Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50px"
+        android:id="@+id/id_space1" />
+    <Button
+        android:gravity="center"
+        android:text="Launch watchdog!"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_btnLaunchWG" />
+    <TextView
+        android:gravity="center"
+        android:text="Demonstration app."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id_txtVw3" />
 </LinearLayout>

@@ -10,6 +10,7 @@ using BeerProcessingManager.PlotManagement;
 using ThingSpeakWinRT;
 using Android.Media;
 using BeerProcessingManager.MainActivityResorces;
+using Android.Content;
 
 namespace BeerProcessingManager
 {

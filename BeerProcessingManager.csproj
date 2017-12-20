@@ -192,6 +192,12 @@
   <ItemGroup>
     <AndroidResource Include="Resources\raw\beer_pour.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\raw\alarm.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ServiceManagement\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
