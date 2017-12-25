@@ -62,10 +62,10 @@
         android:id="@+id/id_space1" />
     <Button
         android:gravity="center"
-        android:text="Get timestamp from service!"
+        android:text="Get seekBar settings!"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/id_btnServiceTimestamp" />
+        android:id="@+id/id_btnGetSBSettings" />
     <android.support.v4.widget.Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,11 +88,4 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/id_btnLaunchWG" />
-    <TextView
-        android:gravity="center"
-        android:text="Demonstration app."
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_txtVw3" />
 </LinearLayout>

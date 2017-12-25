@@ -112,7 +112,7 @@ namespace BeerProcessingManager.ThingspeakManagement
 
     public class Watchdog
     {
-        public int i_FirstskBar { get; set; }
-        public int i_SecondskBar { get; set; }
+        public double i_FirstskBar { get; set; }
+        public double i_SecondskBar { get; set; }
     }
 }

@@ -116,11 +116,15 @@
     <Compile Include="LogManagement\LogManager.cs" />
     <Compile Include="MainActivityResorces\AdditionalResource.cs" />
     <Compile Include="PlotManagement\PlotManager.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="ServiceManagement\BoundService.cs" />
+    <Compile Include="ServiceManagement\BoundServiceConnection.cs" />
+    <Compile Include="ServiceManagement\MyBoundServiceBinder.cs" />
+    <Compile Include="ServiceManagement\MyServices.cs" />
     <Compile Include="ThingspeakManagement\ThingspeakManager.cs" />
     <Compile Include="MainActivityResorces\GenericFragmentPagerAdaptor.cs" />
     <Compile Include="MainActivityResorces\GenericViewPagerFragment.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThingspeakManagement\VwAdapter.cs" />
   </ItemGroup>
@@ -195,9 +199,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\raw\alarm.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ServiceManagement\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

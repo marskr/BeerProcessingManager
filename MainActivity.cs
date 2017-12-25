@@ -11,6 +11,7 @@ using ThingSpeakWinRT;
 using Android.Media;
 using BeerProcessingManager.MainActivityResorces;
 using Android.Content;
+using BeerProcessingManager.ServiceManagement;
 
 namespace BeerProcessingManager
 {
@@ -26,7 +27,10 @@ namespace BeerProcessingManager
         Button btn_TempShowData2;
         Button btn_TempShowData3;
         Button btn_TempShowData4;
+        Button btn_GetSBSettings;
         Button btn_LaunchWatchdog;
+        Button btn_StopWatchdog;
+        
         ImageButton ibtn_beerImage;
         MediaPlayer mp_player;
         TextView viewText1, viewText2;
@@ -173,19 +177,26 @@ namespace BeerProcessingManager
                 seekBar1.SetOnSeekBarChangeListener(this);
                 seekBar2.SetOnSeekBarChangeListener(this);
 
-                btn_LaunchWatchdog = view.FindViewById<Button>(Resource.Id.id_btnLaunchWG);
-                btn_LaunchWatchdog.Click += (s, arg) =>
+                btn_GetSBSettings = view.FindViewById<Button>(Resource.Id.id_btnGetSBSettings);
+                btn_GetSBSettings.Click += (s, arg) =>
                 {
-                    int i_vwTxt1 = 0, i_vwTxt2 = 0;
-                    if (!Int32.TryParse(viewText1.Text, out i_vwTxt1))
+                    double d_vwTxt1 = 0, d_vwTxt2 = 0;
+                    if (!Double.TryParse(viewText1.Text, out d_vwTxt1))
                         Toast.MakeText(this, string.Format("Problem with parsing text value."), ToastLength.Long).Show();
 
-                    if(!Int32.TryParse(viewText2.Text, out i_vwTxt2))
+                    if (!Double.TryParse(viewText2.Text, out d_vwTxt2))
                         Toast.MakeText(this, string.Format("Problem with parsing text value."), ToastLength.Long).Show();
 
-                    SingletonTSList.Instance.st_WatchdogStorage.i_FirstskBar = i_vwTxt1;
-                    SingletonTSList.Instance.st_WatchdogStorage.i_SecondskBar = i_vwTxt2;
+                    SingletonTSList.Instance.st_WatchdogStorage.i_FirstskBar = d_vwTxt1;
+                    SingletonTSList.Instance.st_WatchdogStorage.i_SecondskBar = d_vwTxt2;
+                    Toast.MakeText(this, "Settings obtained!", ToastLength.Long).Show();
                 };
+
+                btn_LaunchWatchdog = view.FindViewById<Button>(Resource.Id.id_btnLaunchWG);
+                btn_StopWatchdog = view.FindViewById<Button>(Resource.Id.id_btnStopWG);
+
+                btn_LaunchWatchdog.Click += StartStartedService;
+                btn_StopWatchdog.Click += StopStartedService;  
 
                 return view;
             });
@@ -194,6 +205,11 @@ namespace BeerProcessingManager
             adaptor.AddFragmentView((i, v, b) =>
             {
                 var view = i.Inflate(Resource.Layout.ModifyValve, v, false);
+
+                //btn_StartBoundService = view.FindViewById<Button>(Resource.Id.id_btnStartBoundService);
+                //btn_StopBoundService = view.FindViewById<Button>(Resource.Id.id_btnStopBoundService);
+                //btn_StartBoundService.Click += StartBoundService;
+                //btn_StopBoundService.Click += StopBoundService;
 
                 return view;
             });
@@ -318,6 +334,27 @@ namespace BeerProcessingManager
         public void OnStopTrackingTouch(SeekBar seekBar)
         {
             //
+        }
+
+        //private void StopBoundService(object sender, System.EventArgs e)
+        //{
+        //    UnbindService(MyBoundServiceConnection);
+        //}
+
+        //private void StartBoundService(object sender, System.EventArgs e)
+        //{
+        //    var BoundServiceIntent = new Intent(this, typeof(BoundService));
+        //    BindService(BoundServiceIntent, MyBoundServiceConnection, Bind.AutoCreate);
+        //}
+
+        private void StopStartedService(object sender, System.EventArgs e)
+        {
+            StopService(new Intent(this, typeof(MyServices)));
+        }
+
+        private void StartStartedService(object sender, System.EventArgs e)
+        {
+            StartService(new Intent(this, typeof(MyServices)));
         }
     }
 }

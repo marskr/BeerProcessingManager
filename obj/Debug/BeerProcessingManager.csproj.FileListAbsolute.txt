@@ -1,4 +1,3 @@
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csprojResolveAssemblyReference.cache
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.config
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.pdb
@@ -27,6 +26,7 @@ D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.pdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.xml
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.Xamarin.Android.xml
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csprojResolveAssemblyReference.cache
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csproj.CoreCompileInputs.cache
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.pdb
@@ -38,6 +38,7 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\basic.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\mainpopup.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\modifyvalve.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\listvwshowdata.xml
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\showchartspopup.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\layout\main.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\values\strings.xml
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\drawable\web_hi_res_512.png
@@ -46,18 +47,13 @@ D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\mipmap-mdpi\ic_laun
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\mipmap-xhdpi\ic_launcher.png
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\mipmap-xxhdpi\ic_launcher.png
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\mipmap-xxxhdpi\ic_launcher.png
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\R.cs.flag
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\uploadflags.txt
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\drawable\beer.png
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\raw\beer_pour.wav
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\menu\showchartspopup.xml
-D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.Net.dll.mdb
-D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\M2Mqtt.NetCf39.dll.mdb
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\raw\alarm.wav
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\R.cs.flag
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\uploadflags.txt
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\ThingSpeakDotNetLibrary.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\BeerProcessingManager.dll.mdb
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\M2Mqtt.Net.dll.mdb
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\M2Mqtt.NetCf39.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\OxyPlot.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\android\assets\ThingSpeakDotNetLibrary.dll.mdb
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\res\raw\alarm.wav
