@@ -5,12 +5,19 @@ using Android.Views;
 
 namespace BeerProcessingManager.ThingspeakManagement
 {
+    /// <summary>
+    /// The class that stores fields that will be used in list panel generated in application.
+    /// </summary>
     public class VwHolder : Java.Lang.Object
     {
         public TextView tv_TxtNo { get; set; }
         public TextView tv_TxtTemperature { get; set; }
         public TextView tv_TxtTime { get; set; }
     }
+
+    /// <summary>
+    /// The class that processes sending data from thingspeak to list panel generated in application.
+    /// </summary>
     public class VwAdapter : BaseAdapter
     {
         private Activity activity;
@@ -21,12 +28,14 @@ namespace BeerProcessingManager.ThingspeakManagement
         private const int i_ThiSensorChoice = 3;
         private const int i_AvgSensorChoice = 4;
         private const int i_DataExtractChoice = 5;
+
         public VwAdapter(Activity activity, List<Origin> l_listview, int i_choice)
         {
             this.activity = activity;
             this.l_measures = l_listview;
             this.i_choice = i_choice;
         }
+
         public override int Count
         {
             get
@@ -34,14 +43,24 @@ namespace BeerProcessingManager.ThingspeakManagement
                 return l_measures.Count;
             }
         }
+
         public override Java.Lang.Object GetItem(int i_position)
         {
             return null;
         }
+
         public override long GetItemId(int i_position)
         {
             return l_measures[i_position].i_Id;
         }
+
+        /// <summary>
+        /// Method that processes sending data from thingspeak to list panel in application.
+        /// </summary>
+        /// <param name="i_position"></param>
+        /// <param name="v_convertView"></param>
+        /// <param name="vg_parent"></param>
+        /// <returns>Returns view with data sent into list panel.</returns>
         public override View GetView(int i_position, View v_convertView, ViewGroup vg_parent)
         {
             var view = v_convertView ?? activity.LayoutInflater.Inflate

@@ -6,6 +6,9 @@ using ThingSpeakWinRT;
 
 namespace BeerProcessingManager.ThingspeakManagement
 {
+    /// <summary>
+    /// Singleton provided to store a list of data obtained from thingspeak server.
+    /// </summary>
     public sealed class SingletonTSList
     {
         private static SingletonTSList SingletonInstance = null;
@@ -15,6 +18,9 @@ namespace BeerProcessingManager.ThingspeakManagement
 
         public Watchdog st_WatchdogStorage = new Watchdog();
 
+        /// <summary>
+        /// Here are stored operations to lock an instance (to provide singleton).
+        /// </summary>
         public static SingletonTSList Instance
         {
             get
@@ -31,12 +37,16 @@ namespace BeerProcessingManager.ThingspeakManagement
         }
     }
 
+    /// <summary>
+    /// Class that stores data important for extraction from thingspeak.
+    /// </summary>
     public class DataStorage
     {
         private const string s_writeAPIKey = "92XHIDTJ9UPNL727";
         private const string s_readAPIKey = "96038QW649O5FFNH";
         private const int i_channelID = 366148;
         private const bool b_requiredSSL = true;
+
         public static List<Origin> ArtificialList()
         {
             List<Origin> l_dataStoringList = new List<Origin>();
@@ -52,6 +62,7 @@ namespace BeerProcessingManager.ThingspeakManagement
 
             return l_dataStoringList;
         }
+
         public static List<Origin> ThingspeakConverter(ThingSpeakData feeds)
         {
             List<Origin> l_dataStoringList = new List<Origin>();
@@ -66,6 +77,7 @@ namespace BeerProcessingManager.ThingspeakManagement
             }
             return l_dataStoringList;
         }
+
         private static List<Origin> AddToList(List<Origin> l_dataStoringList, 
                                               int i_element0_measNo,
                                               double d_element1_time, 
@@ -94,6 +106,9 @@ namespace BeerProcessingManager.ThingspeakManagement
         }
     }
 
+    /// <summary>
+    /// Class that includes fields which will store data gained from thingspeak.
+    /// </summary>
     public class Origin
     {
         public int i_Id { get; set; }
@@ -110,6 +125,9 @@ namespace BeerProcessingManager.ThingspeakManagement
         //}
     }
 
+    /// <summary>
+    /// Class that contains boundaries responsible for alarming an application.
+    /// </summary>
     public class Watchdog
     {
         public double i_FirstskBar { get; set; }

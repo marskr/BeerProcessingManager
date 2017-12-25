@@ -336,17 +336,6 @@ namespace BeerProcessingManager
             //
         }
 
-        //private void StopBoundService(object sender, System.EventArgs e)
-        //{
-        //    UnbindService(MyBoundServiceConnection);
-        //}
-
-        //private void StartBoundService(object sender, System.EventArgs e)
-        //{
-        //    var BoundServiceIntent = new Intent(this, typeof(BoundService));
-        //    BindService(BoundServiceIntent, MyBoundServiceConnection, Bind.AutoCreate);
-        //}
-
         private void StopStartedService(object sender, System.EventArgs e)
         {
             StopService(new Intent(this, typeof(MyServices)));

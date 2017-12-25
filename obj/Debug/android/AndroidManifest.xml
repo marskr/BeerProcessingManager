@@ -13,7 +13,6 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
-    <service android:name="md522d011a0272ea73a18c9bf898f54ee99.BoundService" />
     <service android:name="md522d011a0272ea73a18c9bf898f54ee99.MyServices" />
     <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="BeerProcessingManager.BeerProcessingManager.mono.MonoRuntimeProvider.__mono_init__" />
     <!--suppress ExportedReceiver-->

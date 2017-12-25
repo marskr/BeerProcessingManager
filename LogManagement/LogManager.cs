@@ -4,11 +4,18 @@ using System.Text;
 
 namespace BeerProcessingManager.LogManagement
 {
+    /// <summary>
+    /// Abstract method which contains two methods concerning InfoLog & ErrorLog writing to file.
+    /// </summary>
     abstract public class LogManager
     {
         abstract public void InfoLog(string s_text);
         abstract public void ErrorLog(string s_text);
     }
+
+    /// <summary>
+    /// Singleton storage class. There are stored methods concerning log operations.
+    /// </summary>
     public sealed class ErrInfLogger : LogManager
     {
         private static ErrInfLogger Instance = null;
@@ -31,14 +38,25 @@ namespace BeerProcessingManager.LogManagement
                     WritePreparedLine(DateTime.Now.ToString(s_FormatOfDatetime) + " " + s_text, false);
             }
         }
+
+        /// <summary>
+        /// Write information to file.
+        /// </summary>
+        /// <param name="s_text">Argument is the string which will be send to file.</param>
         override public void InfoLog(string s_text)
         {
             WriteLog(LogType.INFO_LOG, s_text);
         }
+
+        /// <summary>
+        /// Write information to file.
+        /// </summary>
+        /// <param name="s_text">Argument is the string which will be send to file.</param>
         override public void ErrorLog(string s_text)
         {
             WriteLog(LogType.ERROR_LOG, s_text);
         }
+
         private void WriteLog(LogType level, string s_text)
         {
             string s_pretext;
@@ -50,6 +68,7 @@ namespace BeerProcessingManager.LogManagement
             }
             WritePreparedLine(s_pretext + s_text);
         }
+
         private void WritePreparedLine(string s_text, bool b_append = true)
         {
             try
@@ -64,12 +83,17 @@ namespace BeerProcessingManager.LogManagement
                 throw;
             }
         }
+
         [Flags]
         private enum LogType
         {
             INFO_LOG,
             ERROR_LOG
         }
+
+        /// <summary>
+        /// Here are stored operations to lock an instance (to provide singleton).
+        /// </summary>
         public static ErrInfLogger LockInstance
         {
             get

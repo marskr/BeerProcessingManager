@@ -12,25 +12,12 @@ using ThingSpeakWinRT;
 
 namespace BeerProcessingManager.ServiceManagement
 {
+    /// <summary>
+    /// Service prepared to gather data by timer cyclic (interval 10 s).
+    /// </summary>
     [Service]
     class MyServices : Service
     {
-        //public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
-        //{
-        //    Toast.MakeText(this, "Started Service is start", ToastLength.Long).Show();
-        //    return base.OnStartCommand(intent, flags, startId);
-        //}
-
-        //public override void OnDestroy()
-        //{
-        //    base.OnDestroy();
-        //    Toast.MakeText(this, "Started Service is stop", ToastLength.Long).Show();
-        //}
-
-        //public override IBinder OnBind(Intent intent)
-        //{
-        //    return null;
-        //}
         static readonly int TimerWait = 10000;
         Timer timer;
         DateTime startTime;
@@ -67,7 +54,6 @@ namespace BeerProcessingManager.ServiceManagement
             return null;
         }
 
-
         public override void OnDestroy()
         {
             timer.Dispose();
@@ -82,7 +68,6 @@ namespace BeerProcessingManager.ServiceManagement
             //TimeSpan runTime = DateTime.UtcNow.Subtract(startTime);
             SingletonTSList.Instance.l_dataStoringList.Clear();
             ThingSpeakData feeds = await DataStorage.ReadThingspeak();
-            //SingletonTSList.Instance.l_dataStoringList = DataStorage.ThingspeakConverter(feeds);
             if (CheckIfListExceeded(DataStorage.ThingspeakConverter(feeds),
                                     SingletonTSList.Instance.st_WatchdogStorage.i_FirstskBar,
                                     SingletonTSList.Instance.st_WatchdogStorage.i_SecondskBar))
@@ -108,6 +93,7 @@ namespace BeerProcessingManager.ServiceManagement
                 return true;
             else if (d_lowerBoundary > d_minAll)
                 return true;
+
             return false;
         }
     }

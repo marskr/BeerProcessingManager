@@ -1,5 +1,8 @@
 ﻿namespace BeerProcessingManager.MainActivityResorces
 {
+    /// <summary>
+    /// Class which is responsible for preparing intro text in describing application.
+    /// </summary>
     public class AdditionalResource
     {
         public static string IntroText()
