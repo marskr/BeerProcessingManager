@@ -70,10 +70,14 @@ namespace BeerProcessingManager.ThingspeakManagement
             {
                 l_dataStoringList = AddToList(l_dataStoringList, 
                                               element.EntryId ?? 0,
-                                              (element.Field5 == null) ? 0 : Double.Parse(element.Field5, CultureInfo.InvariantCulture),
-                                              (element.Field1 == null) ? 0 : Double.Parse(element.Field1, CultureInfo.InvariantCulture),
-                                              (element.Field2 == null) ? 0 : Double.Parse(element.Field2, CultureInfo.InvariantCulture),
-                                              (element.Field3 == null) ? 0 : Double.Parse(element.Field3, CultureInfo.InvariantCulture));
+                                              (element.Field5 == null) ? 0 : Double.Parse(element.Field5,
+                                                                             CultureInfo.InvariantCulture),
+                                              (element.Field1 == null) ? 0 : Double.Parse(element.Field1, 
+                                                                             CultureInfo.InvariantCulture),
+                                              (element.Field2 == null) ? 0 : Double.Parse(element.Field2, 
+                                                                             CultureInfo.InvariantCulture),
+                                              (element.Field3 == null) ? 0 : Double.Parse(element.Field3, 
+                                                                             CultureInfo.InvariantCulture));
             }
             return l_dataStoringList;
         }

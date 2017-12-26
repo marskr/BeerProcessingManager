@@ -12,6 +12,11 @@ using Android.Media;
 using BeerProcessingManager.MainActivityResorces;
 using Android.Content;
 using BeerProcessingManager.ServiceManagement;
+using System.Net.Sockets;
+using System.ComponentModel;
+using System.IO;
+using System.Net;
+using System.Globalization;
 
 namespace BeerProcessingManager
 {
@@ -33,9 +38,23 @@ namespace BeerProcessingManager
         
         ImageButton ibtn_beerImage;
         MediaPlayer mp_player;
-        TextView viewText1, viewText2;
-        SeekBar seekBar1, seekBar2;
+        TextView tvw_HigherTempBD, tvw_LowerTempBD;
+        SeekBar skb_HigherTempBD, skb_LowerTempBD;
         string[] s_arrangementTab = new string[] { "BASIC", "SHOW DATA", "SHOW CHARTS", "PROCESSING", "VALVE"};
+
+        // MQTT connection
+        private TcpClient client;
+        private readonly BackgroundWorker worker = new BackgroundWorker();
+        private readonly BackgroundWorker worker2 = new BackgroundWorker();
+        public StreamReader STR;
+        public StreamWriter STW;
+        public string receive;
+        public String text_to_send;
+        EditText edt_EdIP1, edt_EdPort1, edt_EdOutput1, edt_EdIP2, edt_EdPort2, edt_EdOutput2;
+        Button btn_StartServer;
+        Button btn_Connect;
+        Button btn_Send;
+        // MQTT end
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -92,6 +111,7 @@ namespace BeerProcessingManager
                     var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 5);
                     viewList.Adapter = adapter;
                 };
+
                 btn_TempShowData1 = view.FindViewById<Button>(Resource.Id.id_btnShowData1);
                 btn_TempShowData1.Click += (s, arg) =>
                 {
@@ -100,6 +120,7 @@ namespace BeerProcessingManager
                     var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 1);
                     viewList.Adapter = adapter;
                 };
+
                 btn_TempShowData2 = view.FindViewById<Button>(Resource.Id.id_btnShowData2);
                 btn_TempShowData2.Click += (s, arg) =>
                 {
@@ -108,6 +129,7 @@ namespace BeerProcessingManager
                     var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 2);
                     viewList.Adapter = adapter;
                 };
+
                 btn_TempShowData3 = view.FindViewById<Button>(Resource.Id.id_btnShowData3);
                 btn_TempShowData3.Click += (s, arg) =>
                 {
@@ -116,6 +138,7 @@ namespace BeerProcessingManager
                     var adapter = new VwAdapter(this, SingletonTSList.Instance.l_dataStoringList, 3);
                     viewList.Adapter = adapter;
                 };
+
                 btn_TempShowData4 = view.FindViewById<Button>(Resource.Id.id_btnShowData4);
                 btn_TempShowData4.Click += (s, arg) =>
                 {
@@ -148,6 +171,7 @@ namespace BeerProcessingManager
                         Toast.MakeText(this, string.Format("CANNOT OBTAIN DATA FROM THINGSPEAK!"), ToastLength.Long).Show();
                     }
                 };
+
                 btn_PopupShowCharts = view.FindViewById<Button>(Resource.Id.id_btnChangeGraph);
                 btn_PopupShowCharts.Click += ShowPopupCharts;
 
@@ -166,25 +190,25 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ModifyProcessing, v, false);
 
-                seekBar1 = view.FindViewById<SeekBar>(Resource.Id.id_skbHigherBoundary);
-                viewText1 = view.FindViewById<TextView>(Resource.Id.id_txtSeekBarHighB);
-                viewText1.Text = "0";
+                skb_HigherTempBD = view.FindViewById<SeekBar>(Resource.Id.id_skbHigherBoundary);
+                tvw_HigherTempBD = view.FindViewById<TextView>(Resource.Id.id_txtSeekBarHighB);
+                tvw_HigherTempBD.Text = "0";
 
-                seekBar2 = view.FindViewById<SeekBar>(Resource.Id.id_skbLowerBoundary);
-                viewText2 = view.FindViewById<TextView>(Resource.Id.id_txtSeekBarLowB);
-                viewText2.Text = "0";
+                skb_LowerTempBD = view.FindViewById<SeekBar>(Resource.Id.id_skbLowerBoundary);
+                tvw_LowerTempBD = view.FindViewById<TextView>(Resource.Id.id_txtSeekBarLowB);
+                tvw_LowerTempBD.Text = "0";
 
-                seekBar1.SetOnSeekBarChangeListener(this);
-                seekBar2.SetOnSeekBarChangeListener(this);
+                skb_HigherTempBD.SetOnSeekBarChangeListener(this);
+                skb_LowerTempBD.SetOnSeekBarChangeListener(this);
 
                 btn_GetSBSettings = view.FindViewById<Button>(Resource.Id.id_btnGetSBSettings);
                 btn_GetSBSettings.Click += (s, arg) =>
                 {
                     double d_vwTxt1 = 0, d_vwTxt2 = 0;
-                    if (!Double.TryParse(viewText1.Text, out d_vwTxt1))
+                    if (!Double.TryParse(tvw_HigherTempBD.Text, out d_vwTxt1))
                         Toast.MakeText(this, string.Format("Problem with parsing text value."), ToastLength.Long).Show();
 
-                    if (!Double.TryParse(viewText2.Text, out d_vwTxt2))
+                    if (!Double.TryParse(tvw_LowerTempBD.Text, out d_vwTxt2))
                         Toast.MakeText(this, string.Format("Problem with parsing text value."), ToastLength.Long).Show();
 
                     SingletonTSList.Instance.st_WatchdogStorage.i_FirstskBar = d_vwTxt1;
@@ -206,10 +230,105 @@ namespace BeerProcessingManager
             {
                 var view = i.Inflate(Resource.Layout.ModifyValve, v, false);
 
-                //btn_StartBoundService = view.FindViewById<Button>(Resource.Id.id_btnStartBoundService);
-                //btn_StopBoundService = view.FindViewById<Button>(Resource.Id.id_btnStopBoundService);
-                //btn_StartBoundService.Click += StartBoundService;
-                //btn_StopBoundService.Click += StopBoundService;
+                edt_EdIP1 = view.FindViewById<EditText>(Resource.Id.id_txtEdIP1);
+                edt_EdPort1 = view.FindViewById<EditText>(Resource.Id.id_txtEdPort1);
+                edt_EdOutput1 = view.FindViewById<EditText>(Resource.Id.id_txtEdOutput1);
+                edt_EdIP2 = view.FindViewById<EditText>(Resource.Id.id_txtEdIP2);
+                edt_EdPort2 = view.FindViewById<EditText>(Resource.Id.id_txtEdPort2);
+                edt_EdOutput2 = view.FindViewById<EditText>(Resource.Id.id_txtEdOutput2);
+
+                worker.DoWork += (s, arg) =>
+                {
+                    while (client.Connected)
+                    {
+                        try
+                        {
+                            receive = STR.ReadLine();
+                            //this.txtEdOutput1.Text = receive;//Dispatcher.Invoke(new Action(delegate () { txtEdOutput1.AppendText("You : " + receive + "\n"); }));
+                            receive = "";
+                        }
+                        catch (Exception ex)
+                        {
+                            Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
+                        }
+                    }
+                };
+
+                worker2.DoWork += (s, arg) =>
+                {
+                    if (client.Connected)
+                    {
+                        STW.WriteLine(text_to_send);
+                        
+                        //this.txtEdOutput1.Text = text_to_send; //Dispatcher.Invoke(new Action(delegate () { TextBox2.AppendText("Me : " + text_to_send + "\n"); }));
+                    }
+                    else
+                    {
+                        Toast.MakeText(this, "Send failed!", ToastLength.Long).Show();
+                    }
+                    worker2.CancelAsync();
+                };
+
+                btn_StartServer = view.FindViewById<Button>(Resource.Id.id_btnStartServer);
+                btn_StartServer.Click += (s, arg) =>
+                {
+                    TcpListener listener = new TcpListener(IPAddress.Any, int.Parse(edt_EdPort1.Text));
+                    listener.Start();
+                    client = listener.AcceptTcpClient();
+                    STR = new StreamReader(client.GetStream());
+                    STW = new StreamWriter(client.GetStream());
+                    STW.AutoFlush = true;
+
+                    worker.RunWorkerAsync(); // Start receiving data from background
+                    worker2.WorkerSupportsCancellation = true;  // Ability to cancel thread
+                };
+
+                btn_Connect = view.FindViewById<Button>(Resource.Id.id_btnConnect);
+                btn_Connect.Click += (s, arg) =>
+                {
+                    client = new TcpClient();
+                    IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(edt_EdIP2.Text), int.Parse(edt_EdPort2.Text, CultureInfo.InvariantCulture));
+
+                    try
+                    {
+                        client.Connect(IP_End);
+                        if (client.Connected)
+                        {
+                            edt_EdOutput1.Append("Connected to server");
+                            STW = new StreamWriter(client.GetStream());
+                            STR = new StreamReader(client.GetStream());
+                            STW.AutoFlush = true;
+
+                            worker.RunWorkerAsync(); // Start receiving data from background
+                            worker2.WorkerSupportsCancellation = true;  // Ability to cancel thread
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
+                    }
+                };
+
+                btn_Send = view.FindViewById<Button>(Resource.Id.id_btnSend);
+                btn_Send.Click += (s, arg) =>
+                {
+                    if (edt_EdOutput2.Text != "")
+                    {
+                        text_to_send = edt_EdOutput2.Text;
+                        worker2.RunWorkerAsync();
+                    }
+                    edt_EdOutput2.Text = "";
+                };
+
+                IPAddress[] localIP = Dns.GetHostAddresses(Dns.GetHostName());
+                foreach (IPAddress address in localIP)
+                {
+                    if (address.AddressFamily == AddressFamily.InterNetwork)
+                    {
+                        edt_EdIP1.Text = address.ToString();
+                        edt_EdIP2.Text = "10.0.0.72";
+                    }
+                }
 
                 return view;
             });
@@ -315,13 +434,13 @@ namespace BeerProcessingManager
         {
             if (fromUser)
             {
-                if(seekBar.Equals(seekBar1))
+                if(seekBar.Equals(skb_HigherTempBD))
                 {
-                    viewText1.Text = string.Format(progress.ToString());
+                    tvw_HigherTempBD.Text = string.Format(progress.ToString());
                 }
-                else if (seekBar.Equals(seekBar2))
+                else if (seekBar.Equals(skb_LowerTempBD))
                 {
-                    viewText2.Text = string.Format(progress.ToString());
+                    tvw_LowerTempBD.Text = string.Format(progress.ToString());
                 }
             }
         }

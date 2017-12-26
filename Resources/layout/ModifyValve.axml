@@ -5,24 +5,160 @@
     android:layout_height="fill_parent"
     android:minWidth="25px"
     android:minHeight="25px">
-    <Button
-        android:text="RELAY ON"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_btnRelayOn" />
-    <Button
-        android:text="RELAY OFF"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:text="SERVER"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="50px"
+            android:id="@+id/id_txtVwServer" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_btnRelayOff" />
-    <!--<Button
-        android:text="START BOUND SERVICE"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:text="IP"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="50px"
+            android:id="@+id/id_txtVwIP1" />
+        <EditText
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:id="@+id/id_txtEdIP1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_btnStartBoundService" />
-    <Button
-        android:text="STOP BOUND SERVICE"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:text="Port"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="50px"
+            android:id="@+id/id_txtVwPort1" />
+        <EditText
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:id="@+id/id_txtEdPort1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/id_btnStopBoundService" />-->
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/id_btnStartServer"
+            android:layout_width="match_parent"
+            android:layout_height="125px"
+            android:text="START SERVER"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:text="CLIENT"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="50px"
+            android:id="@+id/id_txtVwClient" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:text="IP"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="50px"
+            android:id="@+id/id_txtVwIP2" />
+        <EditText
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:id="@+id/id_txtEdIP2" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <TextView
+            android:text="Port"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="50px"
+            android:id="@+id/id_txtVwPort2" />
+        <EditText
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:id="@+id/id_txtEdPort2" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <Button
+            android:id="@+id/id_btnConnect"
+            android:layout_width="match_parent"
+            android:layout_height="125px"
+            android:text="CONNECT"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <EditText
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:id="@+id/id_txtEdOutput1" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <EditText
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:layout_weight="1"
+            android:id="@+id/id_txtEdOutput2" />
+        <Button
+            android:id="@+id/id_btnSend"
+            android:layout_width="250px"
+            android:layout_height="125px"
+            android:text="SEND"
+            android:layout_weight="1" />
+    </LinearLayout>
 </LinearLayout>

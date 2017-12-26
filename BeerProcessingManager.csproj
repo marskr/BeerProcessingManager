@@ -117,9 +117,6 @@
     <Compile Include="MainActivityResorces\AdditionalResource.cs" />
     <Compile Include="PlotManagement\PlotManager.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
-    <Compile Include="ServiceManagement\BoundService.cs" />
-    <Compile Include="ServiceManagement\BoundServiceConnection.cs" />
-    <Compile Include="ServiceManagement\MyBoundServiceBinder.cs" />
     <Compile Include="ServiceManagement\MyServices.cs" />
     <Compile Include="ThingspeakManagement\ThingspeakManager.cs" />
     <Compile Include="MainActivityResorces\GenericFragmentPagerAdaptor.cs" />

@@ -1,3 +1,4 @@
+D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csprojResolveAssemblyReference.cache
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll.config
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.dll
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\BeerProcessingManager.pdb
@@ -26,7 +27,6 @@ D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.pdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.xml
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.dll.mdb
 D:\BeerProcessingManager\BeerProcessingManager\bin\Debug\OxyPlot.Xamarin.Android.xml
-D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csprojResolveAssemblyReference.cache
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.csproj.CoreCompileInputs.cache
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.dll
 D:\BeerProcessingManager\BeerProcessingManager\obj\Debug\BeerProcessingManager.pdb
