@@ -16,7 +16,7 @@ namespace BeerProcessingManager.ServiceManagement
     /// Service prepared to gather data by timer cyclic (interval 10 s).
     /// </summary>
     [Service]
-    class MyServices : Service
+    class GuardService : Service
     {
         static readonly int TimerWait = 10000;
         Timer timer;

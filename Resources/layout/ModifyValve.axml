@@ -66,6 +66,7 @@
             android:id="@+id/id_btnStartServer"
             android:layout_width="match_parent"
             android:layout_height="125px"
+            android:gravity="center"
             android:text="START SERVER"
             android:layout_weight="1" />
     </LinearLayout>
@@ -130,6 +131,7 @@
             android:id="@+id/id_btnConnect"
             android:layout_width="match_parent"
             android:layout_height="125px"
+            android:gravity="center"
             android:text="CONNECT"
             android:layout_weight="1" />
     </LinearLayout>
@@ -158,6 +160,7 @@
             android:id="@+id/id_btnSend"
             android:layout_width="250px"
             android:layout_height="125px"
+            android:gravity="center"
             android:text="SEND"
             android:layout_weight="1" />
     </LinearLayout>

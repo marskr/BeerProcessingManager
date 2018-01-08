@@ -3,20 +3,20 @@ using Android.Widget;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Support.V4.View;
-using System;
-using OxyPlot.Xamarin.Android;
-using BeerProcessingManager.ThingspeakManagement;
-using BeerProcessingManager.PlotManagement;
-using ThingSpeakWinRT;
 using Android.Media;
-using BeerProcessingManager.MainActivityResorces;
 using Android.Content;
-using BeerProcessingManager.ServiceManagement;
+using System;
 using System.Net.Sockets;
 using System.ComponentModel;
 using System.IO;
 using System.Net;
 using System.Globalization;
+using BeerProcessingManager.ThingspeakManagement;
+using BeerProcessingManager.PlotManagement;
+using BeerProcessingManager.MainActivityResorces;
+using BeerProcessingManager.ServiceManagement;
+using ThingSpeakWinRT;
+using OxyPlot.Xamarin.Android;
 
 namespace BeerProcessingManager
 {
@@ -40,7 +40,7 @@ namespace BeerProcessingManager
         MediaPlayer mp_player;
         TextView tvw_HigherTempBD, tvw_LowerTempBD;
         SeekBar skb_HigherTempBD, skb_LowerTempBD;
-        string[] s_arrangementTab = new string[] { "BASIC", "SHOW DATA", "SHOW CHARTS", "PROCESSING", "VALVE"};
+        string[] s_arrangementTab = new string[] { "BASIC", "SHOW DATA", "SHOW CHARTS", "PROCESSING", "VALVE" };
 
         // MQTT connection
         private TcpClient client;
@@ -50,7 +50,12 @@ namespace BeerProcessingManager
         public StreamWriter STW;
         public string receive;
         public String text_to_send;
-        EditText edt_EdIP1, edt_EdPort1, edt_EdOutput1, edt_EdIP2, edt_EdPort2, edt_EdOutput2;
+        EditText edt_EdIP1;
+        EditText edt_EdPort1;
+        EditText edt_EdOutput1;
+        EditText edt_EdIP2;
+        EditText edt_EdPort2;
+        EditText edt_EdOutput2;
         Button btn_StartServer;
         Button btn_Connect;
         Button btn_Send;
@@ -272,7 +277,8 @@ namespace BeerProcessingManager
                 btn_StartServer = view.FindViewById<Button>(Resource.Id.id_btnStartServer);
                 btn_StartServer.Click += (s, arg) =>
                 {
-                    TcpListener listener = new TcpListener(IPAddress.Any, int.Parse(edt_EdPort1.Text));
+                    Toast.MakeText(this, "Non used in this case, just possibility!", ToastLength.Long).Show();
+                    /*TcpListener listener = new TcpListener(IPAddress.Any, int.Parse(edt_EdPort1.Text));
                     listener.Start();
                     client = listener.AcceptTcpClient();
                     STR = new StreamReader(client.GetStream());
@@ -280,17 +286,18 @@ namespace BeerProcessingManager
                     STW.AutoFlush = true;
 
                     worker.RunWorkerAsync(); // Start receiving data from background
-                    worker2.WorkerSupportsCancellation = true;  // Ability to cancel thread
+                    worker2.WorkerSupportsCancellation = true;  // Ability to cancel thread*/
                 };
 
                 btn_Connect = view.FindViewById<Button>(Resource.Id.id_btnConnect);
                 btn_Connect.Click += (s, arg) =>
                 {
-                    client = new TcpClient();
-                    IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(edt_EdIP2.Text), int.Parse(edt_EdPort2.Text, CultureInfo.InvariantCulture));
-
                     try
                     {
+                        client = new TcpClient();
+                        IPEndPoint IP_End = new IPEndPoint(IPAddress.Parse(edt_EdIP2.Text),
+                                                           int.Parse(edt_EdPort2.Text, CultureInfo.InvariantCulture));
+
                         client.Connect(IP_End);
                         if (client.Connected)
                         {
@@ -305,6 +312,7 @@ namespace BeerProcessingManager
                     }
                     catch (Exception ex)
                     {
+                        Toast.MakeText(this, "Cannot connect to a server!", ToastLength.Long).Show();
                         Toast.MakeText(this, ex.Message.ToString(), ToastLength.Long).Show();
                     }
                 };
@@ -312,12 +320,19 @@ namespace BeerProcessingManager
                 btn_Send = view.FindViewById<Button>(Resource.Id.id_btnSend);
                 btn_Send.Click += (s, arg) =>
                 {
-                    if (edt_EdOutput2.Text != "")
+                    try
                     {
-                        text_to_send = edt_EdOutput2.Text;
-                        worker2.RunWorkerAsync();
+                        if (edt_EdOutput2.Text != "")
+                        {
+                            text_to_send = edt_EdOutput2.Text;
+                            worker2.RunWorkerAsync();
+                        }
+                        edt_EdOutput2.Text = "";
                     }
-                    edt_EdOutput2.Text = "";
+                    catch
+                    {
+                        Toast.MakeText(this, "Cannot send a message!", ToastLength.Long).Show();
+                    }
                 };
 
                 IPAddress[] localIP = Dns.GetHostAddresses(Dns.GetHostName());
@@ -326,7 +341,9 @@ namespace BeerProcessingManager
                     if (address.AddressFamily == AddressFamily.InterNetwork)
                     {
                         edt_EdIP1.Text = address.ToString();
-                        edt_EdIP2.Text = "10.0.0.72";
+                        edt_EdIP2.Text = "10.0.0.71";
+                        edt_EdPort1.Text = "123";
+                        edt_EdPort2.Text = "123";
                     }
                 }
 
@@ -344,6 +361,9 @@ namespace BeerProcessingManager
             }
         }
 
+        /// <summary>
+        /// Show the popup menu with information about application features.
+        /// </summary>
         private void ShowPopupMenu(object sender, EventArgs e)
         {
             PopupMenu menu = new PopupMenu(this, btn_PopupMenu);
@@ -382,12 +402,18 @@ namespace BeerProcessingManager
             menu.Show();
         }
 
+        /// <summary>
+        /// Shows Toast text & launches beer sound if sbd tap the beer picture.
+        /// </summary>
         private void ShowCheers(object sender, EventArgs e)
         {
             Toast.MakeText(this, string.Format("CHEERS! ;)"), ToastLength.Long).Show();
             mp_player.Start();
         }
 
+        /// <summary>
+        /// Shows popup menu (which allows to choose graph to display on chart). 
+        /// </summary>
         private void ShowPopupCharts(object sender, EventArgs e)
         {
             PopupMenu menu2 = new PopupMenu(this, btn_PopupShowCharts);
@@ -430,6 +456,12 @@ namespace BeerProcessingManager
             menu2.Show();
         }
 
+        /// <summary>
+        /// The method that processes displaying the process slider movement result.
+        /// </summary>
+        /// <param name="seekBar"></param>
+        /// <param name="progress">Argument that contains progress value in integer.</param>
+        /// <param name="fromUser">Argument that provides which slider is used.</param>
         public void OnProgressChanged(SeekBar seekBar, int progress, bool fromUser)
         {
             if (fromUser)
@@ -455,14 +487,20 @@ namespace BeerProcessingManager
             //
         }
 
+        /// <summary>
+        /// Method that stops GuardService. 
+        /// </summary>
         private void StopStartedService(object sender, System.EventArgs e)
         {
-            StopService(new Intent(this, typeof(MyServices)));
+            StopService(new Intent(this, typeof(GuardService)));
         }
 
+        /// <summary>
+        /// Method that launches GuardService.
+        /// </summary>
         private void StartStartedService(object sender, System.EventArgs e)
         {
-            StartService(new Intent(this, typeof(MyServices)));
+            StartService(new Intent(this, typeof(GuardService)));
         }
     }
 }
